@@ -34,8 +34,8 @@ static const double yMid =  0.55267;
 
 // shared variables
 static long threads;
-static const int frames;
-static const int width;
+static  int frames;
+static  int width;
 unsigned char* pic;
 
 static void* fractal(void* arg)
