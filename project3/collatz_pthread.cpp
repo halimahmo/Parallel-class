@@ -28,23 +28,24 @@ Author: Martin Burtscher
 #include <sys/time.h>
 
 // shared variables
-static long threads;
+static long threads; 
 static long range;
-
+         
 //global dynamic array
 static long *solution;
-
+        
 static void* collatz(void* arg)
-{
+{            
   // determine work for each thread
   const long my_rank = (long)arg;
   const long beg = my_rank * range / threads;
   const long end = (my_rank + 1) * range / threads;
+  int maxlen = 0;
 
   // compute sequence lengths
   int ml = 0;
   for (long i = beg + 1; i <= end; i++) {
-    long val = i;
+    long val = i; 
     int len = 1;
     while (val != 1) {
       len++;
@@ -62,7 +63,13 @@ static void* collatz(void* arg)
     if (maxlen < ml) {
       maxlen = ml;
     }
+
   }
+
+ for (int j = 0; j < threads ; j++){
+   solution[j] = maxlen;
+
+}
   return NULL;
 }
 
@@ -81,6 +88,9 @@ int main(int argc, char *argv[])
 
   // initialize pthread variables
   pthread_t* const handle = new pthread_t[threads - 1];
+
+  //array for local solutions per thread
+  solution = new long [threads];
 
   // start time
   timeval start, end;
@@ -102,6 +112,17 @@ int main(int argc, char *argv[])
     pthread_join(handle[thread], NULL);
   }
 
+  // master thread searching for max solution
+  maxlen = solution [0];
+  for (long thread = 0; thread < threads; thread++){
+
+   if( solution[thread] > maxlen){
+        maxlen = solution[thread];
+  }
+
+}
+
+
   // end time
   gettimeofday(&end, NULL);
   const double runtime = end.tv_sec - start.tv_sec + (end.tv_usec - start.tv_usec) / 1000000.0;
@@ -115,4 +136,3 @@ int main(int argc, char *argv[])
   delete [] solution;
   return 0;
 }
-
