@@ -28,22 +28,21 @@ Author: Martin Burtscher
 #include "cs43805351.h"
 #include <pthread.h>
 
-// sdf
 static const double Delta = 0.004;
 static const double xMid =  0.2389;
 static const double yMid =  0.55267;
 
 // shared variables
 static long threads;
-int frames;
-int width;
+static const int frames;
+static const int width;
 unsigned char* pic;
 
-static void *fractal(void *arg)
+static void* fractal(void* arg)
 {
+  // convert pointer arg to an int: error msg when converted to int but works with long
   const long  my_rank = long(arg);
   // compute frames
-  //printf("made it");
   for (int frame = my_rank; frame < frames; frame +=threads) {
     const double delta = Delta * pow(0.98, frame);
     const double xMin = xMid - delta;
@@ -86,13 +85,13 @@ int main(int argc, char *argv[])
   if (threads < 1) {fprintf(stderr, "error: num_threads must be at least 1\n"); exit(-1);}
   printf("threads: %ld\n", threads);
 
- printf("Number of requested thread: %ld\n",threads); 
-
-  // initialize pthread variables
-   pthread_t* const handle = new pthread_t[threads - 1];
+  printf("Number of requested thread: %ld\n",threads); 
 
   // allocate picture array
   pic = new unsigned char[frames * width * width];
+
+  // initialize pthread variables
+   pthread_t* const handle = new pthread_t[threads - 1];
 
   // start time
   timeval start, end;
