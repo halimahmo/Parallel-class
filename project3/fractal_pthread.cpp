@@ -43,6 +43,7 @@ static void *fractal(void *arg)
 {
   const long  my_rank = long(arg);
   // compute frames
+  //printf("made it");
   for (int frame = my_rank; frame < frames; frame +=threads) {
     const double delta = Delta * pow(0.98, frame);
     const double xMin = xMid - delta;
