@@ -8,7 +8,7 @@
 #SBATCH -t 00:02:00         # expected maximum runtime (hh:mm:ss)
 
 date
-
+#comment
 ./tsp /home/00976/burtsche/Parallel/nrw1379.btsp 20  50000
 ./tsp /home/00976/burtsche/Parallel/nrw1379.btsp 20 100000
 ./tsp /home/00976/burtsche/Parallel/nrw1379.btsp 40  50000
