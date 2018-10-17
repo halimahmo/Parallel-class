@@ -28,7 +28,7 @@ Author: Martin Burtscher
 #include "cs43805351.h"
 #include <pthread.h>
 
-// c
+// sdf
 static const double Delta = 0.004;
 static const double xMid =  0.2389;
 static const double yMid =  0.55267;
