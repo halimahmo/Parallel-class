@@ -12,7 +12,7 @@ static pthread_mutex_t mutex;
 static void* collatz(void* arg)
 {
 
-  maxlen = 0
+  maxlen = 0;
   // determine work for each thread
   const long my_rank = (long)arg;
   const long beg = my_rank * range / threads;
