@@ -1,0 +1,49 @@
+Thu Oct  4 11:32:31 CDT 2018
+TACC: Starting up job 856570
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.0
+error: num_frames must be a multiple of the number of processes
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][readline] Unexpected End-Of-File on file descriptor 5. MPI process died?
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][mtpmi_processops] Error while reading PMI socket. MPI process died?
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 44821) exited with status 255
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 856570
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.0
+error: num_frames must be a multiple of the number of processes
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][readline] Unexpected End-Of-File on file descriptor 5. MPI process died?
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][mtpmi_processops] Error while reading PMI socket. MPI process died?
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 44967) exited with status 255
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][report_error] connect() failed: Connection refused (111)
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 856570
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.0
+error: num_frames must be a multiple of the number of processes
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][readline] Unexpected End-Of-File on file descriptor 5. MPI process died?
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][mtpmi_processops] Error while reading PMI socket. MPI process died?
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 45112) exited with status 255
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][report_error] connect() failed: Connection refused (111)
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 856570
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.0
+error: num_frames must be a multiple of the number of processes
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][readline] Unexpected End-Of-File on file descriptor 5. MPI process died?
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][mtpmi_processops] Error while reading PMI socket. MPI process died?
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 45257) exited with status 255
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][report_error] connect() failed: Connection refused (111)
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+Thu Oct  4 11:32:39 CDT 2018

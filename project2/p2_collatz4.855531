@@ -1,0 +1,86 @@
+Wed Oct  3 13:39:24 CDT 2018
+TACC: Starting up job 855531
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_cyclic': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_cyclic': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_cyclic': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_cyclic': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 1, pid: 16235) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 16234) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 2, pid: 16236) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 3, pid: 16237) exited with status 1
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 855531
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_cyclic': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_cyclic': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_cyclic': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_cyclic': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 16382) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 1, pid: 16383) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 2, pid: 16384) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 3, pid: 16385) exited with status 1
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 855531
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_cyclic': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_cyclic': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_cyclic': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_cyclic': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 16530) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 1, pid: 16531) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 2, pid: 16532) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 3, pid: 16533) exited with status 1
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 855531
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_blocked': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_blocked': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_blocked': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 16678) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_blocked': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 1, pid: 16679) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 2, pid: 16680) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 3, pid: 16681) exited with status 1
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 855531
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_blocked': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_blocked': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_blocked': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_blocked': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 16826) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 1, pid: 16827) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 2, pid: 16828) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 3, pid: 16829) exited with status 1
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 855531
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_blocked': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_blocked': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_blocked': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_blocked': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 1, pid: 16975) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 16974) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 2, pid: 16976) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 3, pid: 16977) exited with status 1
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+Wed Oct  3 13:39:33 CDT 2018

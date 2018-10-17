@@ -1,0 +1,59 @@
+Mon Oct  1 00:10:57 CDT 2018
+TACC: Starting up job 853902
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_cyclic': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_cyclic': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 1, pid: 42127) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 42126) exited with status 1
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 853902
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_cyclic': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_cyclic': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 1, pid: 42273) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 42272) exited with status 1
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 853902
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_cyclic': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][spawn_processes] Failed to execvp() './collatz_MPI_cyclic': No such file or directory (2)
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 1, pid: 42419) exited with status 1
+[c221-303.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 42418) exited with status 1
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 853902
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Collatz v1.0
+range: 1, ..., 1000000
+compute time: 0.162 s
+longest sequence: 525 elements
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 853902
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Collatz v1.0
+range: 1, ..., 10000000
+compute time: 1.886 s
+longest sequence: 686 elements
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 853902
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Collatz v1.0
+range: 1, ..., 100000000
+compute time: 21.498 s
+longest sequence: 950 elements
+ 
+TACC: Shutdown complete. Exiting.
+Mon Oct  1 00:11:28 CDT 2018
