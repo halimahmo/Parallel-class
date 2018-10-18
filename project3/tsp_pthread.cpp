@@ -30,7 +30,12 @@ Author: Martin Burtscher
 #include <algorithm>
 #include <sys/time.h>
 #include "cs43805351.h"
-#include <pthread>
+#include <pthread.h>
+
+//shared variables
+static long threads;
+static int cities, pop, generations, besttour[]; 
+static float px[], py[],  
 
 
 static inline int dist(const int a, const int b, const float px[], const float py[])
@@ -97,7 +102,7 @@ static void drawTour(const int cities, const float posx[], const float posy[], i
   writeBMP(width, width, (unsigned char*)pic, "tsp.bmp");
 }
 
-static int tsp(const int cities, const int pop, const int generations, const float px[], const float py[], int besttour[])
+static int tsp(void* arg)
 {
   // allocate memory
   float range[pop];
@@ -209,7 +214,7 @@ int main(int argc, char *argv[])
   printf("TSP v1.5\n");
 
   // read input
-  if (argc != 4) {fprintf(stderr, "usage: %s input_file population_size number_of_generations\n", argv[0]); exit(-1);}
+  if (argc != 5) {fprintf(stderr, "usage: %s input_file population_size number_of_generations num_threads\n", argv[0]); exit(-1);}
   FILE* f = fopen(argv[1], "rb");
   if (f == NULL) {fprintf(stderr, "error: could not open file %s\n", argv[1]); exit(-1);}
   int cities;
@@ -228,6 +233,9 @@ int main(int argc, char *argv[])
   if (popsize < 4) {fprintf(stderr, "error: population size must be at least 4\n"); exit(-1);}
   const int generations = atoi(argv[3]);
   if (generations < 1) {fprintf(stderr, "error: number of generations must be at least 1\n"); exit(-1);}
+  threads = atoi(argv[4]);
+  if (threads < 1) {fprintf(stderr, "error: num_threads must be at least 1\n"); exit(-1);}
+  printf("threads: %ld\n", threads);
 
   printf("input: %s\n", argv[1]);
   printf("cities: %d\n", cities);
@@ -240,6 +248,8 @@ int main(int argc, char *argv[])
 
   int besttour[cities];
   const int shortest = tsp(cities, popsize, generations, posx, posy, besttour);
+
+   printf("Number of requested thread: %ld\n",threads);
 
   // end time
   gettimeofday(&end, NULL);
