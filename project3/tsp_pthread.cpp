@@ -37,8 +37,8 @@ static long threads;
 static int cities;
 static int pop;
 static int generations, cities;
-static int *range, *besttour, *tour, *tour2, *length ;
-static float *px, *py;
+static int *besttour, *tour, *tour2, *length ;
+static float *px, *py, *range;
 static pthread_mutex_t mutex;
 
 
@@ -112,7 +112,13 @@ static void drawTour(const int cities, const float posx[], const float posy[], i
 static void* tsp(void* arg)
 {
   const long my_rank = long(arg);
+  const long my_start = my_rank * pop / threads;
+  const long my_end = (my_rank + 1) * pop / threads;
 
+// for (long i = beg + 1; i <= end; i++) {
+  int best = 0, worst = 0;
+
+ for (long i = my_start + 1; i <= my_end; i++) {
   // allocate memory
   float range[pop];
   int length[pop], *tour[pop], *tour2[pop];
@@ -139,13 +145,13 @@ static void* tsp(void* arg)
   }
 
   // compute tour lengths
-  int best = 0, worst = 0;
   for (int i = 0; i < pop; i++) {
     length[i] = tourLength(cities, tour[i], px, py);
     if (length[best] > length[i]) best = i;
     if (length[i] > length[worst]) worst = i;
   }
-
+ 
+ }
   // run generations
   for (int gen = 1; gen < generations; gen++) {
     // compute range for finding parents based on fitness
@@ -157,7 +163,7 @@ static void* tsp(void* arg)
     for (int i = 0; i < pop; i++) range[i] *= irsum;
 
     // keep the best
-    for (int j = 0; j < cities; j++) tour2[0][j] = tour[best][j];
+    for (int j = 0; j < cities; j++) besttour[0]= tour[best][j];
 
     // mutate
     for (int i = 1; i < pop / 2; i++) {
@@ -265,7 +271,7 @@ int main(int argc, char *argv[])
     pthread_create(&handle[thread], NULL, tsp, (void *)thread);
   }
 
-  int besttour[cities];
+   besttour = new int [cities];
   //const int shortest = tsp((void*)(threads - 1));
 
    //master thread work
