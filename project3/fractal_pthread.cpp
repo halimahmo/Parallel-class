@@ -40,7 +40,6 @@ unsigned char* pic;
 
 static void* fractal(void* arg)
 {
-  // convert pointer arg to an int: error msg when converted to int but works with long
   const long  my_rank = long(arg);
   
   // compute frames
