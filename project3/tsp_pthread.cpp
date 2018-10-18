@@ -36,13 +36,11 @@ Author: Martin Burtscher
 static long threads;
 static int cities;
 static int pop;
-static int generation;
+static int generations, cities;
+static int *range, *besttour, *tour, *tour2, *length ;
+static float *px, *py;
 static pthread_mutex_t mutex;
-static long threads; 
-static long *range;
-static long *px, *py;
-static long *besttour, *tour, *tour2;
-static long *length;
+
 
 
 static inline int dist(const int a, const int b, const float px[], const float py[])
@@ -109,8 +107,12 @@ static void drawTour(const int cities, const float posx[], const float posy[], i
   writeBMP(width, width, (unsigned char*)pic, "tsp.bmp");
 }
 
-static int tsp(const int cities, const int pop, const int generations, const float px[], const float py[], int besttour[])
+//const int cities, const int pop, const int generations, const float px[], const float py[], int besttour[]
+
+static void* tsp(void* arg)
 {
+  const long my_rank = long(arg);
+
   // allocate memory
   float range[pop];
   int length[pop], *tour[pop], *tour2[pop];
@@ -213,7 +215,8 @@ static int tsp(const int cities, const int pop, const int generations, const flo
   for (int i = 0; i < pop; i++) delete [] tour2[i];
   for (int i = 0; i < pop; i++) delete [] tour[i];
 
-  return length[best];
+  //return length[best];
+  return NULL;
 }
 
 int main(int argc, char *argv[])
@@ -246,6 +249,7 @@ int main(int argc, char *argv[])
 
   //initialize mutex
   pthread_mutex_init(&mutex, NULL);
+  pthread_t* const handle = new pthread_t[threads - 1];
 
   printf("input: %s\n", argv[1]);
   printf("cities: %d\n", cities);
@@ -256,10 +260,23 @@ int main(int argc, char *argv[])
   timeval start, end;
   gettimeofday(&start, NULL);
 
-  int besttour[cities];
-  const int shortest = tsp(cities, popsize, generations, posx, posy, besttour);
+  // launch threads
+  for (long thread = 0; thread < threads - 1; thread++) {
+    pthread_create(&handle[thread], NULL, tsp, (void *)thread);
+  }
 
+  int besttour[cities];
+  //const int shortest = tsp((void*)(threads - 1));
+
+   //master thread work
    printf("Number of requested thread: %ld\n",threads);
+   tsp((void*)(threads - 1));
+
+
+     // join threads
+  for (long thread = 0; thread < threads - 1; thread++) {
+    pthread_join(handle[thread], NULL);
+  }
 
   // end time
   gettimeofday(&end, NULL);
@@ -267,7 +284,7 @@ int main(int argc, char *argv[])
   printf("compute time: %.3f s\n", runtime);
 
   // print result
-  printf("tour length: %d\n", shortest);
+  //printf("tour length: %d\n", shortest);
 
   // draw scaled final tour
   drawTour(cities, posx, posy, besttour);
@@ -281,7 +298,6 @@ int main(int argc, char *argv[])
   delete [] length;
   delete [] tour;
   delete [] tour2;
-
   return 0;
 }
 
