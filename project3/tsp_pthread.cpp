@@ -31,6 +31,19 @@ Author: Martin Burtscher
 #include <sys/time.h>
 #include "cs43805351.h"
 #include <pthread.h>
+<<<<<<< HEAD:project3/tsp.cpp
+=======
+
+//shared variables for tsp
+static long threads;
+static int cities;
+static int pop;
+static int generations, cities;
+static int *besttour, *tour, *tour2, *length ;
+static float *px, *py, *range;
+static pthread_mutex_t mutex;
+
+>>>>>>> 0d591cb5c78a875f4499ea12bd09a057c9e0b809:project3/tsp_pthread.cpp
 
 
 static inline int dist(const int a, const int b, const float px[], const float py[])
@@ -97,11 +110,21 @@ static void drawTour(const int cities, const float posx[], const float posy[], i
   writeBMP(width, width, (unsigned char*)pic, "tsp.bmp");
 }
 
-static int tsp(const int cities, const int pop, const int generations, const float px[], const float py[], int besttour[])
+//const int cities, const int pop, const int generations, const float px[], const float py[], int besttour[]
+
+static void* tsp(void* arg)
 {
+  const long my_rank = long(arg);
+  const long my_start = my_rank * pop / threads;
+  const long my_end = (my_rank + 1) * pop / threads;
+
+// for (long i = beg + 1; i <= end; i++) {
+  int best = 0, worst = 0;
+
+ for (long i = my_start + 1; i <= my_end; i++) {
   // allocate memory
-  float range[pop];
-  int length[pop], *tour[pop], *tour2[pop];
+  range[pop];
+  length[pop], tour[pop], tour2[pop];
   for (int i = 0; i < pop; i++) {
     tour[i] = new int[cities];
     tour2[i] = new int[cities];
@@ -125,13 +148,12 @@ static int tsp(const int cities, const int pop, const int generations, const flo
   }
 
   // compute tour lengths
-  int best = 0, worst = 0;
   for (int i = 0; i < pop; i++) {
     length[i] = tourLength(cities, tour[i], px, py);
     if (length[best] > length[i]) best = i;
     if (length[i] > length[worst]) worst = i;
   }
-
+ 
   // run generations
   for (int gen = 1; gen < generations; gen++) {
     // compute range for finding parents based on fitness
@@ -141,9 +163,10 @@ static int tsp(const int cities, const int pop, const int generations, const flo
     for (int i = 1; i < pop; i++) rsum += range[i];
     const float irsum = 1.0f / rsum;
     for (int i = 0; i < pop; i++) range[i] *= irsum;
+    pthread_mutex_lock(&mutex);
 
     // keep the best
-    for (int j = 0; j < cities; j++) tour2[0][j] = tour[best][j];
+    for (int j = 0; j < cities; j++) besttour[0]= tour[best][j];
 
     // mutate
     for (int i = 1; i < pop / 2; i++) {
@@ -200,8 +223,9 @@ static int tsp(const int cities, const int pop, const int generations, const flo
   // free memory
   for (int i = 0; i < pop; i++) delete [] tour2[i];
   for (int i = 0; i < pop; i++) delete [] tour[i];
-
-  return length[best];
+  }
+  //return length[best];
+  return NULL;
 }
 
 int main(int argc, char *argv[])
@@ -209,10 +233,10 @@ int main(int argc, char *argv[])
   printf("TSP v1.5\n");
 
   // read input
-  if (argc != 4) {fprintf(stderr, "usage: %s input_file population_size number_of_generations\n", argv[0]); exit(-1);}
+  if (argc != 5) {fprintf(stderr, "usage: %s input_file population_size number_of_generations num_threads\n", argv[0]); exit(-1);}
   FILE* f = fopen(argv[1], "rb");
   if (f == NULL) {fprintf(stderr, "error: could not open file %s\n", argv[1]); exit(-1);}
-  int cities;
+  cities;
   int cnt = fread(&cities, sizeof(int), 1, f);
   if (cnt != 1) {fprintf(stderr, "error: failed to read cities\n"); exit(-1);}
   if (cities < 1) {fprintf(stderr, "error: cities must be at least 1\n"); exit(-1);}
@@ -226,8 +250,15 @@ int main(int argc, char *argv[])
 
   const int popsize = atoi(argv[2]);
   if (popsize < 4) {fprintf(stderr, "error: population size must be at least 4\n"); exit(-1);}
-  const int generations = atoi(argv[3]);
+  generations = atoi(argv[3]);
   if (generations < 1) {fprintf(stderr, "error: number of generations must be at least 1\n"); exit(-1);}
+  threads = atoi(argv[4]);
+  if (threads < 1) {fprintf(stderr, "error: num_threads must be at least 1\n"); exit(-1);}
+
+
+  //initialize mutex
+  pthread_mutex_init(&mutex, NULL);
+  pthread_t* const handle = new pthread_t[threads - 1];
 
   printf("input: %s\n", argv[1]);
   printf("cities: %d\n", cities);
@@ -238,8 +269,23 @@ int main(int argc, char *argv[])
   timeval start, end;
   gettimeofday(&start, NULL);
 
-  int besttour[cities];
-  const int shortest = tsp(cities, popsize, generations, posx, posy, besttour);
+  // launch threads
+  for (long thread = 0; thread < threads - 1; thread++) {
+    pthread_create(&handle[thread], NULL, tsp, (void *)thread);
+  }
+
+   besttour = new int [cities];
+  //const int shortest = tsp((void*)(threads - 1));
+
+   //master thread work
+   printf("Number of requested thread: %ld\n",threads);
+   tsp((void*)(threads - 1));
+
+
+     // join threads
+  for (long thread = 0; thread < threads - 1; thread++) {
+    pthread_join(handle[thread], NULL);
+  }
 
   // end time
   gettimeofday(&end, NULL);
@@ -247,10 +293,18 @@ int main(int argc, char *argv[])
   printf("compute time: %.3f s\n", runtime);
 
   // print result
-  printf("tour length: %d\n", shortest);
+  //printf("tour length: %d\n", shortest);
 
   // draw scaled final tour
   drawTour(cities, posx, posy, besttour);
+
+  //destroy mutex
+  pthread_mutex_destroy(&mutex);
+  delete [] range;
+  delete [] px;
+  delete [] py;
+  delete [] besttour;
+  delete [] length;
 
   return 0;
 }

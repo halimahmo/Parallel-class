@@ -56,7 +56,11 @@ static void* collatz(void* arg)
     if (ml < len) ml = len;
   }
 
+<<<<<<< HEAD
   // reduction
+=======
+  // reduction 
+>>>>>>> 0d591cb5c78a875f4499ea12bd09a057c9e0b809
   if (maxlen < ml) {
     pthread_mutex_lock(&mutex);
     if (maxlen < ml) {
@@ -70,8 +74,13 @@ static void* collatz(void* arg)
 
 int main(int argc, char *argv[])
 {
+<<<<<<< HEAD
   printf("Collatz v1.0\n");
 
+=======
+  printf("Collatz profv1.0\n");
+  
+>>>>>>> 0d591cb5c78a875f4499ea12bd09a057c9e0b809
   // check command line
   if (argc != 3) {fprintf(stderr, "usage: %s range num_threads\n", argv[0]); exit(-1);}
   range = atol(argv[1]);
@@ -84,12 +93,22 @@ int main(int argc, char *argv[])
   // initialize pthread variables
   pthread_mutex_init(&mutex, NULL);
   pthread_t* const handle = new pthread_t[threads - 1];
+<<<<<<< HEAD
+=======
+  //A dynamic array for all threads.
+  pthread_t* const result = new pthread_t[threads-1];
+>>>>>>> 0d591cb5c78a875f4499ea12bd09a057c9e0b809
 
   // start time
   timeval start, end;
   gettimeofday(&start, NULL);
+<<<<<<< HEAD
 
   maxlen = 0;
+=======
+	
+  maxlen = 0; 
+>>>>>>> 0d591cb5c78a875f4499ea12bd09a057c9e0b809
 
   // launch threads
   for (long thread = 0; thread < threads - 1; thread++) {

@@ -40,8 +40,8 @@ unsigned char* pic;
 
 static void* fractal(void* arg)
 {
-  // convert pointer arg to an int: error msg when converted to int but works with long
   const long  my_rank = long(arg);
+  
   // compute frames
   for (int frame = my_rank; frame < frames; frame +=threads) {
     const double delta = Delta * pow(0.98, frame);
@@ -83,8 +83,13 @@ int main(int argc, char *argv[])
   printf("computing %d frames of %d by %d fractal\n", frames, width, width);
   threads = atoi(argv[3]);
   if (threads < 1) {fprintf(stderr, "error: num_threads must be at least 1\n"); exit(-1);}
+<<<<<<< HEAD
   //printf("threads: %ld\n", threads);
 
+=======
+  printf("threads: %ld\n", threads);
+ 
+>>>>>>> 0d591cb5c78a875f4499ea12bd09a057c9e0b809
   // allocate picture array
   pic = new unsigned char[frames * width * width];
 
@@ -99,8 +104,14 @@ int main(int argc, char *argv[])
   for (long thread = 0; thread < threads - 1; thread++) {
     pthread_create(&handle[thread], NULL, fractal, (void *)thread);
   }
+<<<<<<< HEAD
  
   printf("threads: %ld\n", threads);
+=======
+  
+  printf("Number of requested thread: %ld\n",threads);
+
+>>>>>>> 0d591cb5c78a875f4499ea12bd09a057c9e0b809
   //masters executiong part of the function
   fractal((void*)(threads - 1));
 
@@ -111,6 +122,7 @@ int main(int argc, char *argv[])
 
   // end time
   gettimeofday(&end, NULL);
+
   const double runtime = end.tv_sec - start.tv_sec + (end.tv_usec - start.tv_usec) / 1000000.0;
   printf("compute time: %.3f s\n", runtime);
 
