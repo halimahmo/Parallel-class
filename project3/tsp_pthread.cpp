@@ -34,9 +34,10 @@ Author: Martin Burtscher
 
 //shared variables
 static long threads;
-static int cities, pop, generations, besttour[]; 
-static float px[], py[],  
-
+static int cities;
+static int pop;
+static int generation;
+static pthread_mutex_t mutex;
 
 static inline int dist(const int a, const int b, const float px[], const float py[])
 {
@@ -102,7 +103,7 @@ static void drawTour(const int cities, const float posx[], const float posy[], i
   writeBMP(width, width, (unsigned char*)pic, "tsp.bmp");
 }
 
-static int tsp(void* arg)
+static int tsp(const int cities, const int pop, const int generations, const float px[], const float py[], int besttour[])
 {
   // allocate memory
   float range[pop];
@@ -237,6 +238,9 @@ int main(int argc, char *argv[])
   if (threads < 1) {fprintf(stderr, "error: num_threads must be at least 1\n"); exit(-1);}
   printf("threads: %ld\n", threads);
 
+  //initialize mutex
+  pthread_mutex_init(&mutex, NULL);
+
   printf("input: %s\n", argv[1]);
   printf("cities: %d\n", cities);
   printf("population: %d\n", popsize);
@@ -262,6 +266,8 @@ int main(int argc, char *argv[])
   // draw scaled final tour
   drawTour(cities, posx, posy, besttour);
 
+  //destroy mutex
+  pthread_mutex_destroy(&mutex);
   return 0;
 }
 
