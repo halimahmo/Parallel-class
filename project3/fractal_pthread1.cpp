@@ -77,9 +77,9 @@ int main(int argc, char *argv[])
 
   // check command line
   if (argc != 4) {fprintf(stderr, "usage: %s frame_width num_frames num_threads\n", argv[0]); exit(-1);}
-  const int width = atoi(argv[1]);
+  width = atoi(argv[1]);
   if (width < 10) {fprintf(stderr, "error: frame_width must be at least 10\n"); exit(-1);}
-  const int frames = atoi(argv[2]);
+  frames = atoi(argv[2]);
   if (frames < 1) {fprintf(stderr, "error: num_frames must be at least 1\n"); exit(-1);}
   printf("computing %d frames of %d by %d fractal\n", frames, width, width);
   threads = atoi(argv[3]);
@@ -99,6 +99,8 @@ int main(int argc, char *argv[])
   for (long thread = 0; thread < threads - 1; thread++) {
     pthread_create(&handle[thread], NULL, fractal, (void *)thread);
   }
+
+   printf("Number of requested threads: %d\n", threads);
 // master thread call to fractal function
   fractal((void*)(threads - 1));
 

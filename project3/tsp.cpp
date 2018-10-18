@@ -30,7 +30,7 @@ Author: Martin Burtscher
 #include <algorithm>
 #include <sys/time.h>
 #include "cs43805351.h"
-#include <pthread>
+#include <pthread.h>
 
 
 static inline int dist(const int a, const int b, const float px[], const float py[])
