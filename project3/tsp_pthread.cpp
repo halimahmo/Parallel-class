@@ -120,8 +120,8 @@ static void* tsp(void* arg)
 
  for (long i = my_start + 1; i <= my_end; i++) {
   // allocate memory
-  float range[pop];
-  int length[pop], *tour[pop], *tour2[pop];
+  range[pop];
+  length[pop], tour[pop], tour2[pop];
   for (int i = 0; i < pop; i++) {
     tour[i] = new int[cities];
     tour2[i] = new int[cities];
@@ -233,7 +233,7 @@ int main(int argc, char *argv[])
   if (argc != 5) {fprintf(stderr, "usage: %s input_file population_size number_of_generations num_threads\n", argv[0]); exit(-1);}
   FILE* f = fopen(argv[1], "rb");
   if (f == NULL) {fprintf(stderr, "error: could not open file %s\n", argv[1]); exit(-1);}
-  int cities;
+  cities;
   int cnt = fread(&cities, sizeof(int), 1, f);
   if (cnt != 1) {fprintf(stderr, "error: failed to read cities\n"); exit(-1);}
   if (cities < 1) {fprintf(stderr, "error: cities must be at least 1\n"); exit(-1);}
@@ -247,11 +247,11 @@ int main(int argc, char *argv[])
 
   const int popsize = atoi(argv[2]);
   if (popsize < 4) {fprintf(stderr, "error: population size must be at least 4\n"); exit(-1);}
-  const int generations = atoi(argv[3]);
+  generations = atoi(argv[3]);
   if (generations < 1) {fprintf(stderr, "error: number of generations must be at least 1\n"); exit(-1);}
   threads = atoi(argv[4]);
   if (threads < 1) {fprintf(stderr, "error: num_threads must be at least 1\n"); exit(-1);}
-  printf("threads: %ld\n", threads);
+
 
   //initialize mutex
   pthread_mutex_init(&mutex, NULL);
@@ -302,8 +302,7 @@ int main(int argc, char *argv[])
   delete [] py;
   delete [] besttour;
   delete [] length;
-  delete [] tour;
-  delete [] tour2;
+
   return 0;
 }
 
