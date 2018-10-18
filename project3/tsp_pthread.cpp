@@ -111,7 +111,7 @@ static void* tsp(void* arg)
   const long my_start = my_rank * pop / threads;
   const long my_end = (my_rank + 1) * pop / threads;
 
-// for (long i = beg + 1; i <= end; i++) {
+for (long i = my_start + 1; i <= my_end; i++) {
   int best = 0, worst = 0;
 
  for (long i = my_start + 1; i <= my_end; i++) {
@@ -144,7 +144,7 @@ static void* tsp(void* arg)
     if (length[best] > length[i]) best = i;
     if (length[i] > length[worst]) worst = i;
   }
- 
+ }
   // run generations
   for (int gen = 1; gen < generations; gen++) {
     // compute range for finding parents based on fitness
@@ -253,7 +253,7 @@ int main(int argc, char *argv[])
   length [pop];
   tour [pop];
   tour2 [pop];
-   range[pop];
+  range[pop];
   
   //initialize mutex
   pthread_mutex_init(&mutex, NULL);
