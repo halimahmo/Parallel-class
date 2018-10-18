@@ -125,8 +125,8 @@ int main(int argc, char *argv[])
   }
 
   //clean up
-  delete []handle;
   delete [] pic;
+  delete []handle;
   return 0;
 }
 
