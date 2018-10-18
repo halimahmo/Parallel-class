@@ -34,9 +34,7 @@ Author: Martin Burtscher
 
 //shared variables for tsp
 static long threads;
-static int cities;
-static int pop;
-static int generations, cities;
+static int cities, pop, generations;
 static int *besttour, *tour, *tour2, *length ;
 static float *px, *py, *range;
 static pthread_mutex_t mutex;
@@ -107,8 +105,6 @@ static void drawTour(const int cities, const float posx[], const float posy[], i
   writeBMP(width, width, (unsigned char*)pic, "tsp.bmp");
 }
 
-//const int cities, const int pop, const int generations, const float px[], const float py[], int besttour[]
-
 static void* tsp(void* arg)
 {
   const long my_rank = long(arg);
@@ -121,7 +117,6 @@ static void* tsp(void* arg)
  for (long i = my_start + 1; i <= my_end; i++) {
   // allocate memory
   range[pop];
-  length[pop], tour[pop], tour2[pop];
   for (int i = 0; i < pop; i++) {
     tour[i] = new int[cities];
     tour2[i] = new int[cities];
@@ -233,7 +228,7 @@ int main(int argc, char *argv[])
   if (argc != 5) {fprintf(stderr, "usage: %s input_file population_size number_of_generations num_threads\n", argv[0]); exit(-1);}
   FILE* f = fopen(argv[1], "rb");
   if (f == NULL) {fprintf(stderr, "error: could not open file %s\n", argv[1]); exit(-1);}
-  cities;
+  
   int cnt = fread(&cities, sizeof(int), 1, f);
   if (cnt != 1) {fprintf(stderr, "error: failed to read cities\n"); exit(-1);}
   if (cities < 1) {fprintf(stderr, "error: cities must be at least 1\n"); exit(-1);}
@@ -252,6 +247,14 @@ int main(int argc, char *argv[])
   threads = atoi(argv[4]);
   if (threads < 1) {fprintf(stderr, "error: num_threads must be at least 1\n"); exit(-1);}
 
+//intialize global variables
+  pop = popsize;
+  px = new float [cities];
+  py = new float [cities];
+  length [pop];
+  tour[pop];
+  tour2[pop];
+ 
 
   //initialize mutex
   pthread_mutex_init(&mutex, NULL);
