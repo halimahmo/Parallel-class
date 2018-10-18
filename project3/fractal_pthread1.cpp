@@ -102,6 +102,11 @@ int main(int argc, char *argv[])
 // master thread call to fractal function
   fractal((void*)(threads - 1));
 
+    // join threads
+  for (long thread = 0; thread < threads - 1; thread++) {
+    pthread_join(handle[thread], NULL);
+  }
+  
   // end time
   gettimeofday(&end, NULL);
   const double runtime = end.tv_sec - start.tv_sec + (end.tv_usec - start.tv_usec) / 1000000.0;
