@@ -64,12 +64,12 @@ int main(int argc, char *argv[])
   pthread_t* const handle = new pthread_t[threads - 1];
   //A dynamic array for all threads.
   pthread_t* const result = new pthread_t[threads-1];
+
   // start time
   timeval start, end;
   gettimeofday(&start, NULL);
-
-  //<<<<<<<<<<<<	
-  //maxlen = 0; 
+	
+  maxlen = 0; 
 
   // launch threads
   for (long thread = 0; thread < threads - 1; thread++) {
