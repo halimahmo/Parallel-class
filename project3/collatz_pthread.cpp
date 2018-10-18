@@ -48,7 +48,7 @@ static void* collatz(void* arg)
 
 int main(int argc, char *argv[])
 {
-  printf("Collatz v1.0\n");
+  printf("Collatz profv1.0\n");
   
   // check command line
   if (argc != 3) {fprintf(stderr, "usage: %s range num_threads\n", argv[0]); exit(-1);}
