@@ -35,7 +35,7 @@ Author: Martin Burtscher
 //shared variables for tsp
 static long threads;
 static int cities, pop, generations;
-static int *besttour, *tour[], *tour2[], *length ;
+static int *besttour[], *tour[], *tour2[], *length ;
 static float *px, *py, *range;
 static pthread_mutex_t mutex;
 
@@ -149,16 +149,22 @@ for (long i = my_start + 1; i <= my_end; i++) {
   for (int gen = 1; gen < generations; gen++) {
     // compute range for finding parents based on fitness
     const float wlength = length[worst];
+
+    if (my_rank == 0){
     for (int i = 0; i < pop; i++) range[i] = wlength / length[i];
     float rsum = range[0];
     for (int i = 1; i < pop; i++) rsum += range[i];
     const float irsum = 1.0f / rsum;
     for (int i = 0; i < pop; i++) range[i] *= irsum;
+    }
+
+    if(my_rank != 0){
     pthread_mutex_lock(&mutex);
-
     // keep the best
-    for (int j = 0; j < cities; j++) besttour[0]= tour[best][j];
-
+    for (int j = 0; j < cities; j++) besttour[0][j]= tour[best][j]; 
+  }
+    pthread_mutex_unlock(&mutex);
+    
     // mutate
     for (int i = 1; i < pop / 2; i++) {
       const int seed = (gen * pop + i) * 4;
@@ -209,7 +215,7 @@ for (long i = my_start + 1; i <= my_end; i++) {
   }
 
   // return best tour
-  for (int j = 0; j < cities; j++) besttour[j] = tour[best][j];
+  for (int j = 0; j < cities; j++) besttour[0][j] = tour[best][j];
 
   // free memory
   for (int i = 0; i < pop; i++) delete [] tour2[i];
@@ -254,6 +260,7 @@ int main(int argc, char *argv[])
   tour [pop];
   tour2 [pop];
   range[pop];
+  besttour[cities];
   
   //initialize mutex
   pthread_mutex_init(&mutex, NULL);
@@ -273,7 +280,7 @@ int main(int argc, char *argv[])
     pthread_create(&handle[thread], NULL, tsp, (void *)thread);
   }
 
-   besttour = new int [cities];
+  
   //const int shortest = tsp((void*)(threads - 1));
 
    //master thread work
@@ -295,7 +302,7 @@ int main(int argc, char *argv[])
   //printf("tour length: %d\n", shortest);
 
   // draw scaled final tour
-  drawTour(cities, posx, posy, besttour);
+  drawTour(cities, posx, posy, besttour[cities]);
 
   //destroy mutex
   pthread_mutex_destroy(&mutex);
