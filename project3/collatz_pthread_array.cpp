@@ -28,9 +28,8 @@ Author: Martin Burtscher
 #include <sys/time.h>
 
 // shared variables
-static long threads; 
-static long range;
-         
+static long *range;
+
 //global dynamic array
 static long *solution;
         

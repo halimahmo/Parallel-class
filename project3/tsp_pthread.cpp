@@ -38,6 +38,12 @@ static int cities;
 static int pop;
 static int generation;
 static pthread_mutex_t mutex;
+static long threads; 
+static long *range;
+static long *px, *py;
+static long *besttour, *tour, *tour2;
+static long *length;
+
 
 static inline int dist(const int a, const int b, const float px[], const float py[])
 {
@@ -268,6 +274,14 @@ int main(int argc, char *argv[])
 
   //destroy mutex
   pthread_mutex_destroy(&mutex);
+  delete [] range;
+  delete [] px;
+  delete [] py;
+  delete [] besttour;
+  delete [] length;
+  delete [] tour;
+  delete [] tour2;
+
   return 0;
 }
 
