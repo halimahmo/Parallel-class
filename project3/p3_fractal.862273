@@ -1,0 +1,102 @@
+Thu Oct 18 01:41:36 CDT 2018
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 1
+Number of requested thread: 1
+compute time: 12.374 s
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 2
+Number of requested thread: 2
+compute time: 6.237 s
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 3
+Number of requested thread: 3
+compute time: 4.349 s
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 4
+Number of requested thread: 4
+compute time: 3.207 s
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 5
+Number of requested thread: 5
+compute time: 2.616 s
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 6
+Number of requested thread: 6
+compute time: 2.249 s
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 7
+Number of requested thread: 7
+compute time: 2.022 s
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 8
+Number of requested thread: 8
+compute time: 1.763 s
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 9
+Number of requested thread: 9
+compute time: 1.665 s
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 10
+Number of requested thread: 10
+compute time: 1.423 s
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 11
+Number of requested thread: 11
+compute time: 1.403 s
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 12
+Number of requested thread: 12
+compute time: 1.290 s
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 13
+Number of requested thread: 13
+compute time: 1.156 s
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 14
+Number of requested thread: 14
+compute time: 1.143 s
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 15
+Number of requested thread: 15
+compute time: 1.010 s
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 16
+Number of requested thread: 16
+compute time: 1.001 s
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 17
+Number of requested thread: 17
+compute time: 0.870 s
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 18
+Number of requested thread: 18
+compute time: 0.868 s
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 19
+Number of requested thread: 19
+compute time: 0.862 s
+Fractal v1.7
+computing 100 frames of 512 by 512 fractal
+threads: 20
+Number of requested thread: 20
+compute time: 1.014 s
+Thu Oct 18 01:42:25 CDT 2018
