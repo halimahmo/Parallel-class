@@ -160,11 +160,11 @@ for (long i = my_start + 1; i <= my_end; i++) {
     for (int i = 0; i < pop; i++) range[i] *= irsum;
     }
 
-    if(my_rank != 0){
+    if(my_start == 0){
     pthread_mutex_lock(&mutex);
     // keep the best
     for (int j = 0; j < cities; j++) besttour[0][j]= tour[best][j]; 
-  }
+    }
     pthread_mutex_unlock(&mutex);
 
     // mutate
@@ -201,13 +201,14 @@ for (long i = my_start + 1; i <= my_end; i++) {
       }
     }
 
-    pthread_mutex_lock(&mutex);
+    
     // exchange old and new generation
     for (int i = 0; i < pop; i++) {
       std::swap(tour[i], tour2[i]);
 
     }
 
+   if(my_start == 0){
     // compute tour lengths
     const int old = length[best];
     
@@ -230,6 +231,7 @@ for (long i = my_start + 1; i <= my_end; i++) {
 } 
   //return length[best];
   return NULL;
+  }
 }
 
 int main(int argc, char *argv[])
