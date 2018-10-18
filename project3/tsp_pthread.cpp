@@ -31,6 +31,8 @@ Author: Martin Burtscher
 #include <sys/time.h>
 #include "cs43805351.h"
 #include <pthread.h>
+<<<<<<< HEAD:project3/tsp.cpp
+=======
 
 //shared variables for tsp
 static long threads;
@@ -39,6 +41,7 @@ static int *besttour, *tour, *tour2, *length ;
 static float *px, *py, *range;
 static pthread_mutex_t mutex;
 
+>>>>>>> 0d591cb5c78a875f4499ea12bd09a057c9e0b809:project3/tsp_pthread.cpp
 
 
 static inline int dist(const int a, const int b, const float px[], const float py[])

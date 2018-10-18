@@ -63,9 +63,7 @@ static void* collatz(void* arg)
     if (maxlen < ml) {
       maxlen = ml;
     }
-
-  }
-
+ }
  for (int j = 0; j < threads ; j++){
    solution[j] = maxlen;
 
@@ -89,15 +87,15 @@ int main(int argc, char *argv[])
   // initialize pthread variables
   pthread_t* const handle = new pthread_t[threads - 1];
 
-  //array for local solutions per thread
+  //intialize new dynamic array for local solutions
   solution = new long [threads];
+  
+   //changed global maxlen to local maxlen
+   int  maxlen = 0;
 
   // start time
   timeval start, end;
   gettimeofday(&start, NULL);
-
-  //local variable maxlen
-  int  maxlen = 0;
 
   // launch threads
   for (long thread = 0; thread < threads - 1; thread++) {
@@ -121,7 +119,6 @@ int main(int argc, char *argv[])
   }
 
 }
-
 
   // end time
   gettimeofday(&end, NULL);

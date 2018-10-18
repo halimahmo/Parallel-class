@@ -1,0 +1,43 @@
+#!/bin/bash
+#SBATCH -A CS4380_5351_7332 # account name
+#SBATCH -J p3_tsp           # job name
+#SBATCH -o p3_tsp.%j        # name of the output and error file
+#SBATCH -N 1                # total number of nodes requested
+#SBATCH -n 1                # total number of tasks requested
+#SBATCH -p gpu              # queue name
+#SBATCH -t 00:05:00         # expected maximum runtime (hh:mm:ss)
+
+date
+
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 20  50000 1
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 20 100000 1
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 40  50000 1
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 40 100000 1
+
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 20  50000 2
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 20 100000 2
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 40  50000 2
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 40 100000 2
+
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 20  50000 4
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 20 100000 4
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 40  50000 4
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 40 100000 4
+
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 20  50000 5
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 20 100000 5
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 40  50000 5
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 40 100000 5
+
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 20  50000 10
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 20 100000 10
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 40  50000 10
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 40 100000 10
+
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 20  50000 20
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 20 100000 20
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 40  50000 20
+./tsp_pthread /home/00976/burtsche/Parallel/nrw1379.btsp 40 100000 20
+
+date
+

@@ -83,8 +83,13 @@ int main(int argc, char *argv[])
   printf("computing %d frames of %d by %d fractal\n", frames, width, width);
   threads = atoi(argv[3]);
   if (threads < 1) {fprintf(stderr, "error: num_threads must be at least 1\n"); exit(-1);}
+<<<<<<< HEAD
+  //printf("threads: %ld\n", threads);
+
+=======
   printf("threads: %ld\n", threads);
  
+>>>>>>> 0d591cb5c78a875f4499ea12bd09a057c9e0b809
   // allocate picture array
   pic = new unsigned char[frames * width * width];
 
@@ -99,9 +104,14 @@ int main(int argc, char *argv[])
   for (long thread = 0; thread < threads - 1; thread++) {
     pthread_create(&handle[thread], NULL, fractal, (void *)thread);
   }
+<<<<<<< HEAD
+ 
+  printf("threads: %ld\n", threads);
+=======
   
   printf("Number of requested thread: %ld\n",threads);
 
+>>>>>>> 0d591cb5c78a875f4499ea12bd09a057c9e0b809
   //masters executiong part of the function
   fractal((void*)(threads - 1));
 

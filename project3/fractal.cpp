@@ -26,25 +26,15 @@ Author: Martin Burtscher
 #include <cmath>
 #include <sys/time.h>
 #include "cs43805351.h"
-#include <pthread.h>
-
 
 static const double Delta = 0.004;
 static const double xMid =  0.2389;
 static const double yMid =  0.55267;
 
-//shared variables
-static long threads;
-static int width;
-static int frames;
-static unsigned char* pic;
-
-static void* fractal(void* arg)
+static void fractal(const int width, const int frames, unsigned char* pic)
 {
-  const long my_rank = (long)arg;
-
   // compute frames
-  for (int frame = my_rank; frame < frames; frame+=threads) {
+  for (int frame = 0; frame < frames; frame++) {
     const double delta = Delta * pow(0.98, frame);
     const double xMin = xMid - delta;
     const double yMin = yMid - delta;
@@ -68,7 +58,6 @@ static void* fractal(void* arg)
       }
     }
   }
-  return NULL;
 }
 
 int main(int argc, char *argv[])
@@ -76,39 +65,22 @@ int main(int argc, char *argv[])
   printf("Fractal v1.7\n");
 
   // check command line
-  if (argc != 4) {fprintf(stderr, "usage: %s frame_width num_frames num_threads\n", argv[0]); exit(-1);}
-  width = atoi(argv[1]);
+  if (argc != 3) {fprintf(stderr, "usage: %s frame_width num_frames\n", argv[0]); exit(-1);}
+  const int width = atoi(argv[1]);
   if (width < 10) {fprintf(stderr, "error: frame_width must be at least 10\n"); exit(-1);}
-  frames = atoi(argv[2]);
+  const int frames = atoi(argv[2]);
   if (frames < 1) {fprintf(stderr, "error: num_frames must be at least 1\n"); exit(-1);}
   printf("computing %d frames of %d by %d fractal\n", frames, width, width);
-  threads = atoi(argv[3]);
-  if (threads < 1) {fprintf(stderr, "error: num_threads must be at least 1\n"); exit(-1);}
 
   // allocate picture array
-  pic = new unsigned char[frames * width * width];
-
-  //Initialize pthread variable
-  pthread_t* const handle = new pthread_t[threads - 1];
+  unsigned char* pic = new unsigned char[frames * width * width];
 
   // start time
   timeval start, end;
   gettimeofday(&start, NULL);
 
-  // launch worker threads
-  for (long thread = 0; thread < threads - 1; thread++) {
-    pthread_create(&handle[thread], NULL, fractal, (void *)thread);
-  }
+  fractal(width, frames, pic);
 
-   printf("Number of requested threads: %d\n", threads);
-// master thread call to fractal function
-  fractal((void*)(threads - 1));
-
-    // join threads
-  for (long thread = 0; thread < threads - 1; thread++) {
-    pthread_join(handle[thread], NULL);
-  }
-  
   // end time
   gettimeofday(&end, NULL);
   const double runtime = end.tv_sec - start.tv_sec + (end.tv_usec - start.tv_usec) / 1000000.0;
@@ -124,7 +96,6 @@ int main(int argc, char *argv[])
   }
 
   delete [] pic;
-  delete [] handle;
   return 0;
 }
 
