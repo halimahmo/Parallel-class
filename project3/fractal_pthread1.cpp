@@ -41,7 +41,7 @@ static unsigned char* pic;
 
 static void* fractal(void* arg)
 {
-  const int my_rank = (int)arg;
+  const long my_rank = (long)arg;
 
   // compute frames
   for (int frame = my_rank; frame < frames; frame+=threads) {
