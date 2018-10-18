@@ -31,17 +31,14 @@ Author: Martin Burtscher
 #include <sys/time.h>
 #include "cs43805351.h"
 #include <pthread.h>
-<<<<<<< HEAD:project3/tsp.cpp
-=======
 
 //shared variables for tsp
 static long threads;
 static int cities, pop, generations;
-static int *besttour, *tour, *tour2, *length ;
+static int *besttour, *tour[], *tour2[], *length ;
 static float *px, *py, *range;
 static pthread_mutex_t mutex;
 
->>>>>>> 0d591cb5c78a875f4499ea12bd09a057c9e0b809:project3/tsp_pthread.cpp
 
 
 static inline int dist(const int a, const int b, const float px[], const float py[])
@@ -119,7 +116,6 @@ static void* tsp(void* arg)
 
  for (long i = my_start + 1; i <= my_end; i++) {
   // allocate memory
-  range[pop];
   for (int i = 0; i < pop; i++) {
     tour[i] = new int[cities];
     tour2[i] = new int[cities];
@@ -204,7 +200,7 @@ static void* tsp(void* arg)
 
     // compute tour lengths
     const int old = length[best];
-    best = 0; worst = 0;
+    
     for (int i = 0; i < pop; i++) {
       length[i] = tourLength(cities, tour[i], px, py);
       if (length[best] > length[i]) best = i;
@@ -255,10 +251,10 @@ int main(int argc, char *argv[])
   px = new float [cities];
   py = new float [cities];
   length [pop];
-  tour[pop];
-  tour2[pop];
- 
-
+  tour [pop];
+  tour2 [pop];
+   range[pop];
+  
   //initialize mutex
   pthread_mutex_init(&mutex, NULL);
   pthread_t* const handle = new pthread_t[threads - 1];
