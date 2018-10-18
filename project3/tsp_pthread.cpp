@@ -115,6 +115,7 @@ for (long i = my_start + 1; i <= my_end; i++) {
   int best = 0, worst = 0;
 
  for (long i = my_start + 1; i <= my_end; i++) {
+   if(my_start == 0){
   // allocate memory
   for (int i = 0; i < pop; i++) {
     tour[i] = new int[cities];
@@ -144,7 +145,8 @@ for (long i = my_start + 1; i <= my_end; i++) {
     if (length[best] > length[i]) best = i;
     if (length[i] > length[worst]) worst = i;
   }
- }
+   }
+
   // run generations
   for (int gen = 1; gen < generations; gen++) {
     // compute range for finding parents based on fitness
@@ -164,7 +166,7 @@ for (long i = my_start + 1; i <= my_end; i++) {
     for (int j = 0; j < cities; j++) besttour[0][j]= tour[best][j]; 
   }
     pthread_mutex_unlock(&mutex);
-    
+
     // mutate
     for (int i = 1; i < pop / 2; i++) {
       const int seed = (gen * pop + i) * 4;
@@ -199,9 +201,11 @@ for (long i = my_start + 1; i <= my_end; i++) {
       }
     }
 
+    pthread_mutex_lock(&mutex);
     // exchange old and new generation
     for (int i = 0; i < pop; i++) {
       std::swap(tour[i], tour2[i]);
+
     }
 
     // compute tour lengths
@@ -216,11 +220,14 @@ for (long i = my_start + 1; i <= my_end; i++) {
 
   // return best tour
   for (int j = 0; j < cities; j++) besttour[0][j] = tour[best][j];
+ }
 
+  if(my_start == 0){
   // free memory
   for (int i = 0; i < pop; i++) delete [] tour2[i];
   for (int i = 0; i < pop; i++) delete [] tour[i];
   }
+} 
   //return length[best];
   return NULL;
 }
