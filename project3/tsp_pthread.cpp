@@ -32,7 +32,7 @@ Author: Martin Burtscher
 #include "cs43805351.h"
 #include <pthread.h>
 
-//shared variables
+//shared variables for tsp
 static long threads;
 static int cities;
 static int pop;
@@ -151,7 +151,6 @@ static void* tsp(void* arg)
     if (length[i] > length[worst]) worst = i;
   }
  
- }
   // run generations
   for (int gen = 1; gen < generations; gen++) {
     // compute range for finding parents based on fitness
@@ -161,6 +160,7 @@ static void* tsp(void* arg)
     for (int i = 1; i < pop; i++) rsum += range[i];
     const float irsum = 1.0f / rsum;
     for (int i = 0; i < pop; i++) range[i] *= irsum;
+    pthread_mutex_lock(&mutex);
 
     // keep the best
     for (int j = 0; j < cities; j++) besttour[0]= tour[best][j];
@@ -220,7 +220,7 @@ static void* tsp(void* arg)
   // free memory
   for (int i = 0; i < pop; i++) delete [] tour2[i];
   for (int i = 0; i < pop; i++) delete [] tour[i];
-
+  }
   //return length[best];
   return NULL;
 }

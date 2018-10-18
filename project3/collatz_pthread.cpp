@@ -34,7 +34,7 @@ static void* collatz(void* arg)
     if (ml < len) ml = len;
   }
 
-  // reduction <<<<<<<<<<<<<
+  // reduction 
   if (maxlen < ml) {
     pthread_mutex_lock(&mutex);
     if (maxlen < ml) {
