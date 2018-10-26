@@ -26,7 +26,7 @@ Author: Martin Burtscher
 #include <cstdio>
 #include <sys/time.h>
 
-static int collatz(const long range)
+static int collatz(const long range, long thread_count)
 {
   // compute sequence lengths
   int maxlen = 0;
@@ -56,12 +56,15 @@ int main(int argc, char *argv[])
   const long range = atol(argv[1]);
   if (range < 1) {fprintf(stderr, "error: range must be at least 1\n"); exit(-1);}
   printf("range: 1, ..., %ld\n", range);
+  const long thread_count = atol(argv[2]);
+  if (thread_count < 1) {fprintf(stderr, "error: thread must be at least 1\n"); exit(-1);}
+  printf("thread requested: %ld\n", thread_count);
 
   // start time
   timeval start, end;
   gettimeofday(&start, NULL);
 
-  const int maxlen = collatz(range);
+  const int maxlen = collatz(range, thread_count);
 
   // end time
   gettimeofday(&end, NULL);
