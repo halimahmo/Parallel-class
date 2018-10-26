@@ -30,7 +30,7 @@ static int collatz(const long range, long thread_count)
 {
   // compute sequence lengths
   int maxlen = 0;
-  #pragma omp parallel for num_threads(thread_count) SCHED default(none) shared(maxlen, thread_count) private(i, val, len)
+  #pragma omp parallel for num_threads(thread_count) default(none) shared(maxlen, thread_count) private(i, val, len) SCHED
   for (long i = 1; i <= range; i++) {
     long val = i;
     int len = 1;
