@@ -52,15 +52,9 @@ static inline unsigned int hash(unsigned int val)
   return (val >> 16) ^ val;
 }
 
-static int pickParent(const int pop, const float range[], const int seed)
+static inline int pickParent(const int pop, const int seed)
 {
-  float rnd = 1.0f * hash(seed) / UINT_MAX;
-  int p = 0;
-  while ((p < pop - 1) && (rnd > range[p])) {
-    rnd -= range[p];
-    p++;
-  }
-  return p;
+  return hash(seed) % pop;
 }
 
 static void drawTour(const int cities, const float posx[], const float posy[], int tour[])
@@ -98,7 +92,7 @@ static void drawTour(const int cities, const float posx[], const float posy[], i
 static int tsp(const int cities, const int pop, const int generations, const float px[], const float py[], int besttour[])
 {
   // allocate memory
-  float range[pop];
+  int range[pop];
   int length[pop], *tour[pop], *tour2[pop];
   for (int i = 0; i < pop; i++) {
     tour[i] = new int[cities];
@@ -123,76 +117,66 @@ static int tsp(const int cities, const int pop, const int generations, const flo
   }
 
   // compute tour lengths
-  int best = 0, worst = 0;
   for (int i = 0; i < pop; i++) {
     length[i] = tourLength(cities, tour[i], px, py);
-    if (length[best] > length[i]) best = i;
-    if (length[i] > length[worst]) worst = i;
   }
 
   // run generations
   for (int gen = 1; gen < generations; gen++) {
-    // compute range for finding parents based on fitness
-    const float wlength = length[worst];
-    for (int i = 0; i < pop; i++) range[i] = wlength / length[i];
-    float rsum = range[0];
-    for (int i = 1; i < pop; i++) rsum += range[i];
-    const float irsum = 1.0f / rsum;
-    for (int i = 0; i < pop; i++) range[i] *= irsum;
-
-    // keep the best
-    for (int j = 0; j < cities; j++) tour2[0][j] = tour[best][j];
-
-    // mutate
-    for (int i = 1; i < pop / 2; i++) {
-      const int seed = (gen * pop + i) * 4;
-      const int parent = pickParent(pop, range, seed);
-      for (int j = 0; j < cities; j++) tour2[i][j] = tour[parent][j];
-      int pos1 = hash(seed + 1) % cities;
-      int pos2 = hash(seed + 2) % cities;
-      std::swap(tour2[i][pos1], tour2[i][pos2]);
-    }
-
-    // cross-over
-    for (int i = pop / 2; i < pop; i++) {
-      const int seed = (gen * pop + i) * 4;
-      const int parent1 = pickParent(pop, range, seed);
-      const int parent2 = pickParent(pop, range, seed + 1);
-      const int pos1 = hash(seed + 2) % cities;
-      const int pos2 = hash(seed + 3) % cities;
-      bool used[cities];
-      for (int j = 0; j < cities; j++) used[j] = false;
-      for (int j = pos1; j != pos2; j = (j + 1) % cities) {
-        const int city = tour[parent1][j];
-        tour2[i][j] = city;
-        used[city] = true;
-      }
-      int pos = pos2;
-      for (int j = 0; j < cities; j++) {
-        const int city = tour[parent2][j];
-        if (!used[city]) {
-          tour2[i][pos] = city;
-          pos = (pos + 1) % cities;
+    // compute next generation
+    for (int i = 0; i < pop; i++) {
+      if (i == 0) {
+        // keep the best
+        int best = 0;
+        for (int i = 1; i < pop; i++) {
+          if (length[best] > length[i]) best = i;
+        }
+        for (int j = 0; j < cities; j++) tour2[0][j] = tour[best][j];
+      } else if (i < pop / 2) {
+        // mutate
+        const int seed = (gen * pop + i) * 4;
+        const int parent = pickParent(pop, seed);
+        for (int j = 0; j < cities; j++) tour2[i][j] = tour[parent][j];
+        int pos1 = hash(seed + 1) % cities;
+        int pos2 = hash(seed + 2) % cities;
+        std::swap(tour2[i][pos1], tour2[i][pos2]);
+      } else {
+        // cross-over
+        const int seed = (gen * pop + i) * 4;
+        const int parent1 = pickParent(pop, seed);
+        const int parent2 = pickParent(pop, seed + 1);
+        const int pos1 = hash(seed + 2) % cities;
+        const int pos2 = hash(seed + 3) % cities;
+        bool used[cities];
+        for (int j = 0; j < cities; j++) used[j] = false;
+        for (int j = pos1; j != pos2; j = (j + 1) % cities) {
+          const int city = tour[parent1][j];
+          tour2[i][j] = city;
+          used[city] = true;
+        }
+        int pos = pos2;
+        for (int j = 0; j < cities; j++) {
+          const int city = tour[parent2][j];
+          if (!used[city]) {
+            tour2[i][pos] = city;
+            pos = (pos + 1) % cities;
+          }
         }
       }
     }
 
-    // exchange old and new generation
+    // exchange old and new generation and compute tour lengths
     for (int i = 0; i < pop; i++) {
       std::swap(tour[i], tour2[i]);
-    }
-
-    // compute tour lengths
-    const int old = length[best];
-    best = 0; worst = 0;
-    for (int i = 0; i < pop; i++) {
       length[i] = tourLength(cities, tour[i], px, py);
-      if (length[best] > length[i]) best = i;
-      if (length[i] > length[worst]) worst = i;
     }
   }
 
   // return best tour
+  int best = 0;
+  for (int i = 1; i < pop; i++) {
+    if (length[best] > length[i]) best = i;
+  }
   for (int j = 0; j < cities; j++) besttour[j] = tour[best][j];
 
   // free memory
@@ -204,7 +188,7 @@ static int tsp(const int cities, const int pop, const int generations, const flo
 
 int main(int argc, char *argv[])
 {
-  printf("TSP v1.5\n");
+  printf("TSP v1.6\n");
 
   // read input
   if (argc != 4) {fprintf(stderr, "usage: %s input_file population_size number_of_generations\n", argv[0]); exit(-1);}
@@ -224,6 +208,7 @@ int main(int argc, char *argv[])
 
   const int popsize = atoi(argv[2]);
   if (popsize < 4) {fprintf(stderr, "error: population size must be at least 4\n"); exit(-1);}
+  if (popsize > 1000) {fprintf(stderr, "error: population size must be less than 1000\n"); exit(-1);}
   const int generations = atoi(argv[3]);
   if (generations < 1) {fprintf(stderr, "error: number of generations must be at least 1\n"); exit(-1);}
 
