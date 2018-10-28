@@ -1,0 +1,1 @@
+Default schedule output with no schedule clause after the function:
