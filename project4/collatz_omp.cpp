@@ -29,8 +29,9 @@ Author: Martin Burtscher
 static int collatz(const long range, long thread_count)
 {
   // compute sequence lengths
+  //reduction(max:maxlen) schedule(static, 2)
   int maxlen = 0;
-  #pragma omp parallel for num_threads(thread_count) default(none) //reduction(max:maxlen) schedule(static, 2)
+  #pragma omp parallel for num_threads(thread_count) default(none) 
   for (long i = 1; i <= range; i++) {
     long val = i;
     int len = 1;
