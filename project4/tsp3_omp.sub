@@ -12,9 +12,10 @@ date
 ./tsp3_omp /home/00976/burtsche/Parallel/nrw1379.btsp 38 200000
 ./tsp3_omp /home/00976/burtsche/Parallel/nrw1379.btsp 38 200000
 ./tsp3_omp /home/00976/burtsche/Parallel/nrw1379.btsp 38 200000
+./tsp3_omp /home/00976/burtsche/Parallel/nrw1379.btsp 40 200000
 
 ./tsp3 /home/00976/burtsche/Parallel/nrw1379.btsp 38 200000
-./tsp3 /home/00976/burtsche/Parallel/nrw1379.btsp 40 200000
+
 
 date
 
