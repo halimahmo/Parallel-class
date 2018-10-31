@@ -43,11 +43,9 @@ static void fractal(const int width, const int frames, unsigned char* pic)
     const double yMin = yMid - delta;
     const double dw = 2.0 * delta / width;
 
-    #pragma omp parallel num_threads(19) default(none) shared(width, pic) private(delta, xMid, yMid, dw, frame)
+    #pragma omp for
     for (int row = 0; row < width; row++) {
       const double cy = yMin + row * dw;
-
-      #pragma omp for
       for (int col = 0; col < width; col++) {
         const double cx = xMin + col * dw;
         double x = cx;
