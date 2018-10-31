@@ -17,6 +17,7 @@ date
 ./fractal_omp2 2048 50
 ./fractal_omp2 2048 100
 
+
 ./fractal_omp3 2048 25
 ./fractal_omp3 2048 50
 ./fractal_omp3 2048 100
