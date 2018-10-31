@@ -36,7 +36,7 @@ static void fractal(const int width, const int frames, unsigned char* pic)
   // compute frames
   //version 2 
 
-# pragma omp parallel num_threads(19) default(none) shared(frames, pic) private(Delta, xMid, yMid)
+# pragma omp parallel num_threads(19) default(none) shared(pic)
   for (int frame = 0; frame < frames; frame++) {
     const double delta = Delta * pow(0.98, frame);
     const double xMin = xMid - delta;

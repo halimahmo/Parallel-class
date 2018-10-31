@@ -122,11 +122,11 @@ static int tsp(const int cities, const int pop, const int generations, const flo
   }
 
   // run generations
- # pragma omp parallel num_threads(19) default(none) shared(tour, tour2, length, px, py)
+ # pragma omp parallel for num_threads(19) default(none) shared(tour, tour2, length, px, py)
   for (int gen = 1; gen < generations; gen++) {
 
     // compute next generation
-    # pragma omp parallel for schedule(static, 1)
+    # pragma omp for schedule(static, 1)
     for (int i = 0; i < pop; i++) {
       if (i == 0) {
         // keep the best
@@ -169,7 +169,7 @@ static int tsp(const int cities, const int pop, const int generations, const flo
     }
 
     // exchange old and new generation and compute tour lengths
-    #pragma omp parallel for schedule(static, 1)
+    #pragma omp for schedule(static, 1)
     for (int i = 0; i < pop; i++) {
       std::swap(tour[i], tour2[i]);
       length[i] = tourLength(cities, tour[i], px, py);
