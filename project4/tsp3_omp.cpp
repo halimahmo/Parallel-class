@@ -122,7 +122,7 @@ static int tsp(const int cities, const int pop, const int generations, const flo
   }
 
   // run generations
- # pragma omp parallel num_threads(20) default(none) shared(tour, tour2, length, px, py)
+ # pragma omp parallel num_threads(19) default(none) shared(tour, tour2, length, px, py)
   for (int gen = 1; gen < generations; gen++) {
 
     // compute next generation
