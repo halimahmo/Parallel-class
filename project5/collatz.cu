@@ -29,14 +29,12 @@ Author: Martin Burtscher
 
 static const int ThreadsPerBlock = 512;
 
-static __global__ int collatz(const long range, int* maxlen)
+static __global__ int collatz(int* maxlen, const long range,)
 {
   // compute sequence lengths
-  int maxlen = 0;
-
   const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x;
   if(idx < range){
-    long val = i;
+    long val = idx;
     int len = 1;
     while (val != 1) {
       len++;
@@ -51,6 +49,16 @@ static __global__ int collatz(const long range, int* maxlen)
 
 }
 
+static void CheckCuda()
+{
+  cudaError_t e;
+  cudaDeviceSynchronize();
+  if (cudaSuccess != (e = cudaGetLastError())) {
+    fprintf(stderr, "CUDA error %d: %s\n", e, cudaGetErrorString(e));
+    exit(-1);
+  }
+}
+
 int main(int argc, char *argv[])
 {
   printf("Collatz v1.0\n");
@@ -61,20 +69,40 @@ int main(int argc, char *argv[])
   if (range < 1) {fprintf(stderr, "error: range must be at least 1\n"); exit(-1);}
   printf("range: 1, ..., %ld\n", range);
 
+  //allocating space for device copy of maxlen 
+  int *d_maxlen;
+  const int size = range * sizeof(int);
+  cudaMalloc((void **)&d_maxlen, size);
+
+  //intializing the cpu maxlen 
+  int maxlen = 0;
+
+  //copying maxlen value to device
+  if (cudaSuccess != cudaMemcpy(d_maxlen, &maxlen, size, cudaMemcpyHostToDevice)) {fprintf(stderr, "copying to device failed\n"); exit(-1);}
+
   // start time
   timeval start, end;
   gettimeofday(&start, NULL);
 
-  const int maxlen = collatz(range);
+  // launch GPU kernel
+  AddKernel<<<(range + ThreadsPerBlock - 1) / ThreadsPerBlock, ThreadsPerBlock>>>(d_maxlen, range);
+  cudaDeviceSynchronize();
+
+  //const int maxlen = collatz(range);
 
   // end time
   gettimeofday(&end, NULL);
   const double runtime = end.tv_sec - start.tv_sec + (end.tv_usec - start.tv_usec) / 1000000.0;
   printf("compute time: %.3f s\n", runtime);
+  CheckCuda();
+
+  // copy result back to host
+  if (cudaSuccess != cudaMemcpy(&maxlen, d_maxlen, size, cudaMemcpyDeviceToHost)) {fprintf(stderr, "copying from device failed\n"); exit(-1);}
 
   // print result
   printf("longest sequence: %d elements\n", maxlen);
 
+  cudaFree(d_maxlen);
   return 0;
 }
 
