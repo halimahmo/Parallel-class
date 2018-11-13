@@ -34,7 +34,7 @@ static __global__ void collatzKernel(int* maxlen, const long range)
   // compute sequence lengths
   const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x;
   if(idx < range){
-    long val = idx;
+    long val = 1;
     int len = 1;
     while (val != 1) {
       len++;
@@ -44,7 +44,7 @@ static __global__ void collatzKernel(int* maxlen, const long range)
         val = 3 * val + 1;  // odd
       }
     }
-    *maxlen = atomicMax(maxlen, len);
+    *maxlen = atomicMax(&maxlen, len);
     }
 }
 

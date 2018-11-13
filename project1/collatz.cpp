@@ -26,10 +26,16 @@ Author: Martin Burtscher
 #include <cstdio>
 #include <sys/time.h>
 
-static int collatz(const long range)
+
+int Max(int maxlen, int len){
+	return (maxlen > len) ? maxlen : len;
+
+}
+
+static void collatz(const long range, int* maxlen)
 {
   // compute sequence lengths
-  int maxlen = 0;
+  
   for (long i = 1; i <= range; i++) {
     long val = i;
     int len = 1;
@@ -41,11 +47,11 @@ static int collatz(const long range)
         val = 3 * val + 1;  // odd
       }
     }
-    if (maxlen < len) maxlen = len;
+    *maxlen = Max(*maxlen, len);
   }
 
-  return maxlen;
 }
+
 
 int main(int argc, char *argv[])
 {
@@ -56,12 +62,15 @@ int main(int argc, char *argv[])
   const long range = atol(argv[1]);
   if (range < 1) {fprintf(stderr, "error: range must be at least 1\n"); exit(-1);}
   printf("range: 1, ..., %ld\n", range);
+  
+  int maxlen = 0;
 
   // start time
   timeval start, end;
   gettimeofday(&start, NULL);
 
-  const int maxlen = collatz(range);
+  //const int maxlen = 
+  collatz(range, &maxlen);
 
   // end time
   gettimeofday(&end, NULL);
