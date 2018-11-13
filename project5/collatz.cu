@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
 
   //intializing the cpu maxlen 
   int maxlen = 0;
-  printf("I got to maxlen");
+
   //copying maxlen value to device
   if (cudaSuccess != cudaMemcpy(d_maxlen, &maxlen, size, cudaMemcpyHostToDevice)) {fprintf(stderr, "copying to device failed\n"); exit(-1);}
 
@@ -86,8 +86,6 @@ int main(int argc, char *argv[])
   // launch GPU kernel
   collatzKernel<<<(range + ThreadsPerBlock - 1) / ThreadsPerBlock, ThreadsPerBlock>>>(d_maxlen, range);
   cudaDeviceSynchronize();
-
-  //const int maxlen = collatz(range);
 
   // end time
   gettimeofday(&end, NULL);
