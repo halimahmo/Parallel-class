@@ -29,7 +29,7 @@ Author: Martin Burtscher
 
 static const int ThreadsPerBlock = 512;
 
-static __global__ int collatz(int* maxlen, const long range,)
+static __global__ void collatz(int* maxlen, const long range,)
 {
   // compute sequence lengths
   const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x;
@@ -44,9 +44,8 @@ static __global__ int collatz(int* maxlen, const long range,)
         val = 3 * val + 1;  // odd
       }
     }
-    if (maxlen < len) maxlen = len;
+    if (*maxlen < len) *maxlen = len;
     }
-
 }
 
 static void CheckCuda()
@@ -70,7 +69,7 @@ int main(int argc, char *argv[])
   printf("range: 1, ..., %ld\n", range);
 
   //allocating space for device copy of maxlen 
-  int *d_maxlen;
+  int* d_maxlen;
   const int size = range * sizeof(int);
   cudaMalloc((void **)&d_maxlen, size);
 
@@ -85,7 +84,7 @@ int main(int argc, char *argv[])
   gettimeofday(&start, NULL);
 
   // launch GPU kernel
-  AddKernel<<<(range + ThreadsPerBlock - 1) / ThreadsPerBlock, ThreadsPerBlock>>>(d_maxlen, range);
+  collatz<<<(range + ThreadsPerBlock - 1) / ThreadsPerBlock, ThreadsPerBlock>>>(d_maxlen, range);
   cudaDeviceSynchronize();
 
   //const int maxlen = collatz(range);
