@@ -1,0 +1,22 @@
+Tue Nov 13 14:46:30 CST 2018
+Collatz v1.0
+range: 1, ..., 1000000
+compute time: 0.004 s
+longest sequence: 450 elements
+Collatz v1.0
+range: 1, ..., 10000000
+compute time: 0.043 s
+longest sequence: 603 elements
+Collatz v1.0
+range: 1, ..., 100000000
+compute time: 0.474 s
+longest sequence: 746 elements
+Collatz v1.0
+range: 1, ..., 1000000000
+compute time: 5.149 s
+longest sequence: 972 elements
+
+
+75 short
+83 short
+22 more
