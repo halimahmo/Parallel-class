@@ -20,3 +20,16 @@ longest sequence: 972 elements
 75 short
 83 short
 22 more
+
+
+
+vadd output:
+
+Mon Nov 12 23:02:18 CST 2018
+running 1000000-element vector addition
+compute time: 0.000171 s
+running 10000000-element vector addition
+compute time: 0.000745 s
+running 500-element vector addition
+compute time: 0.000049 s
+Mon Nov 12 23:02:19 CST 2018
