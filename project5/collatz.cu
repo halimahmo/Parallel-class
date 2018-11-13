@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
   int maxlen = 0;
   printf("I got to maxlen");
   //copying maxlen value to device
-  if (cudaSuccess != cudaMemcpy(d_maxlen, maxlen, size, cudaMemcpyHostToDevice)) {fprintf(stderr, "copying to device failed\n"); exit(-1);}
+  if (cudaSuccess != cudaMemcpy(d_maxlen, &maxlen, size, cudaMemcpyHostToDevice)) {fprintf(stderr, "copying to device failed\n"); exit(-1);}
 
   // start time
   timeval start, end;
