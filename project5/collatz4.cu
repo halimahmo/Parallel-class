@@ -27,7 +27,7 @@ Author: Martin Burtscher
 #include <cuda.h>
 #include <sys/time.h>
 
-static const int ThreadsPerBlock = 512;
+static const int ThreadsPerBlock = 128;
 
 //collatz kernel function
 static __global__ void  collatzKernel(const long range, int* maxlen)
@@ -71,6 +71,7 @@ int main(int argc, char *argv[])
   if (argc != 2) {fprintf(stderr, "usage: %s range\n", argv[0]); exit(-1);}
   const long range = atol(argv[1]);
   if (range < 1) {fprintf(stderr, "error: range must be at least 1\n"); exit(-1);}
+  if (range % 4 != 0)  {fprintf(stderr, "error: range must be a multiple of 4\n"); exit(-1);}
   printf("range: 1, ..., %ld\n", range);
 
   //allocate space for device copy of maxlen
