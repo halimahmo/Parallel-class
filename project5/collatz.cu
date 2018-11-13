@@ -35,7 +35,7 @@ static __global__ void  collatzKernel(const long range, int* maxlen)
   // compute sequence lengths
   const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x;
   if(idx < range){
-    long val = i;
+    long val = idx + 1;
     int len = 1;
     while (val != 1) {
       len++;
@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
   timeval start, end;
   gettimeofday(&start, NULL);
 
-  collatzKernel<<<(range + ThreadsPerBlock - 1) / ThreadsPerBlock, ThreadsPerBlock>>>(d_maxlen, range);
+  collatzKernel<<<(range + ThreadsPerBlock - 1) / ThreadsPerBlock, ThreadsPerBlock>>>(range, d_maxlen);
   cudaDeviceSynchronize();
 
 
@@ -95,6 +95,8 @@ int main(int argc, char *argv[])
   gettimeofday(&end, NULL);
   const double runtime = end.tv_sec - start.tv_sec + (end.tv_usec - start.tv_usec) / 1000000.0;
   printf("compute time: %.3f s\n", runtime);
+  CheckCuda();
+  
   // copy result back to host
   if (cudaSuccess != cudaMemcpy(&maxlen, d_maxlen, size, cudaMemcpyDeviceToHost)) {fprintf(stderr, "copying from device failed\n"); exit(-1);}
 
