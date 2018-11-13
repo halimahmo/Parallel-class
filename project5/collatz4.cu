@@ -29,12 +29,13 @@ Author: Martin Burtscher
 
 static const int ThreadsPerBlock = 512;
 
-static __global__ void collatzKernel(int* maxlen, const long range)
+//collatz kernel function
+static __global__ void  collatzKernel(const long range, int* maxlen)
 {
   // compute sequence lengths
   const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x;
   if(idx < range){
-    long val = 1;
+    long val = idx + 1;
     int len = 1;
     while (val != 1) {
       len++;
@@ -44,8 +45,11 @@ static __global__ void collatzKernel(int* maxlen, const long range)
         val = 3 * val + 1;  // odd
       }
     }
-    *maxlen = atomicMax(&maxlen, len);
-    }
+
+    //thread updating maxlen using atomicMax
+    if (*maxlen < len) *maxlen = atomicMax(maxlen, len);
+  }
+
 }
 
 static void CheckCuda()
@@ -68,9 +72,9 @@ int main(int argc, char *argv[])
   if (range < 1) {fprintf(stderr, "error: range must be at least 1\n"); exit(-1);}
   printf("range: 1, ..., %ld\n", range);
 
-  //allocating space for device copy of maxlen 
+  //allocate space for device copy of maxlen
   int* d_maxlen;
-  const int size = range * sizeof(int);
+  const int size = sizeof(int);
   cudaMalloc((void **)&d_maxlen, size);
 
   //intializing the cpu maxlen 
@@ -83,9 +87,9 @@ int main(int argc, char *argv[])
   timeval start, end;
   gettimeofday(&start, NULL);
 
-  // launch GPU kernel
-  collatzKernel<<<(range + ThreadsPerBlock - 1) / ThreadsPerBlock, ThreadsPerBlock>>>(d_maxlen, range);
+  collatzKernel<<<(range + ThreadsPerBlock - 1) / ThreadsPerBlock, ThreadsPerBlock>>>(range, d_maxlen);
   cudaDeviceSynchronize();
+
 
   // end time
   gettimeofday(&end, NULL);
