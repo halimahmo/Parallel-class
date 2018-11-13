@@ -29,7 +29,7 @@ Author: Martin Burtscher
 
 static const int ThreadsPerBlock = 512;
 
-static __global__ void collatzKernel(int* maxlen, const long range,)
+static __global__ void collatzKernel(int* maxlen, const long range)
 {
   // compute sequence lengths
   const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x;
