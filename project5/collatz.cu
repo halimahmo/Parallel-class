@@ -44,7 +44,7 @@ static __global__ void collatzKernel(int* maxlen, const long range)
         val = 3 * val + 1;  // odd
       }
     }
-    *maxlen = atomicMax(maxlen, len);
+    if (*maxlen < len) *maxlen = len;
     }
 }
 
@@ -86,6 +86,8 @@ int main(int argc, char *argv[])
   // launch GPU kernel
   collatzKernel<<<(range + ThreadsPerBlock - 1) / ThreadsPerBlock, ThreadsPerBlock>>>(d_maxlen, range);
   cudaDeviceSynchronize();
+
+  //const int maxlen = collatz(range);
 
   // end time
   gettimeofday(&end, NULL);
