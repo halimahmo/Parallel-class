@@ -29,7 +29,7 @@ Author: Martin Burtscher
 
 static const int ThreadsPerBlock = 512;
 
-static __global__ void collatz(int* maxlen, const long range,)
+static __global__ void collatzKernel(int* maxlen, const long range,)
 {
   // compute sequence lengths
   const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x;
@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
   gettimeofday(&start, NULL);
 
   // launch GPU kernel
-  collatz<<<(range + ThreadsPerBlock - 1) / ThreadsPerBlock, ThreadsPerBlock>>>(d_maxlen, range);
+  collatzKernel<<<(range + ThreadsPerBlock - 1) / ThreadsPerBlock, ThreadsPerBlock>>>(d_maxlen, range);
   cudaDeviceSynchronize();
 
   //const int maxlen = collatz(range);
