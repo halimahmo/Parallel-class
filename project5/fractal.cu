@@ -25,6 +25,7 @@ Author: Martin Burtscher
 #include <cstdlib>
 #include <cmath>
 #include <sys/time.h>
+#include <cuda.h>
 #include "cs43805351.h"
 
 static const double Delta = 0.004;
