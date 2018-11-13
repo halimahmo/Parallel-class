@@ -48,8 +48,11 @@ int main(int argc, char *argv[])
   int* c = new int[N];
 
   // copy inputs to device
-  if (cudaSuccess != cudaMemcpy(d_a, a, size, cudaMemcpyHostToDevice)) {fprintf(stderr, "copying to device failed\n"); exit(-1);}
-  if (cudaSuccess != cudaMemcpy(d_b, b, size, cudaMemcpyHostToDevice)) {fprintf(stderr, "copying to device failed\n"); exit(-1);}
+  //if (cudaSuccess != cudaMemcpy(d_a, a, size, cudaMemcpyHostToDevice)) {fprintf(stderr, "copying to device failed\n"); exit(-1);}
+  //if (cudaSuccess != cudaMemcpy(d_b, b, size, cudaMemcpyHostToDevice)) {fprintf(stderr, "copying to device failed\n"); exit(-1);}
+
+  (d_a, a, size, cudaMemcpyHostToDevice);
+  (d_a, a, size, cudaMemcpyHostToDevice);
 
   // start time
   timeval start, end;
@@ -66,7 +69,8 @@ int main(int argc, char *argv[])
   CheckCuda();
 
   // copy result back to host
-  if (cudaSuccess != cudaMemcpy(c, d_c, size, cudaMemcpyDeviceToHost)) {fprintf(stderr, "copying from device failed\n"); exit(-1);}
+  //if (cudaSuccess != cudaMemcpy(c, d_c, size, cudaMemcpyDeviceToHost)) {fprintf(stderr, "copying from device failed\n"); exit(-1);}
+  cudaMemcpy(c, d_c, size, cudaMemcpyDeviceToHost);
 
   // verify result
   for (int i = 0; i < N; i++) {
