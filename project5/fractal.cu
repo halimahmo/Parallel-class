@@ -90,8 +90,8 @@ int main(int argc, char *argv[])
   printf("computing %d frames of %d by %d fractal\n", frames, width, width);
 
   // allocate picture array on GPU
-  //int N = frames * width * width;
-  int N = frames * width ;
+  int N = frames * width * width;
+
   const int size = N  * sizeof(int);
   unsigned char* d_pic;
   cudaMalloc((void **)&d_pic, size);
