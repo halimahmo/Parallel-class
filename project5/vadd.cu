@@ -9,7 +9,7 @@ static __global__ void AddKernel(const int* a, const int* b, int* c, const int n
   const int idx = threadIdx.x + blockIdx.x * blockDim.x;
   if (idx < n) {
     c[idx] = a[idx] + b[idx];
-  }
+ }
 }
 
 static void random_ints(int* x, const int n)
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 
   // alloc space for device copies of a, b, c
   int *d_a, *d_b, *d_c;
-  const int size = N * sizeof(int);
+  const int size =N * sizeof(int);
   cudaMalloc((void **)&d_a, size);
   cudaMalloc((void **)&d_b, size);
   cudaMalloc((void **)&d_c, size);
