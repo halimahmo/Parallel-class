@@ -48,11 +48,12 @@ static __global__ void  collatzKernel(const long range, int* maxlen)
     }
 
     if (newMaxlen < len) newMaxlen = len;
-      *maxlen = atomicMax(newMaxlen, len);
-      
+     
+
     //thread updating maxlen using atomicMax
     //if (*maxlen < len) *maxlen = atomicMax(maxlen, len);
   }
+  *maxlen = atomicMax(newMaxlen, len);
 
 }
 
