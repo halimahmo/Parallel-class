@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
 
   //allocate space for device copy of maxlen
   int* d_maxlen;
-  const int size = sizeof(int);
+  const int size = range * sizeof(int);
   cudaMalloc((void **)&d_maxlen, size);
 
   //intializing the cpu maxlen 

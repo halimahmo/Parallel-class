@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
   // allocate space for pic array on GPU
   //int N = frames * width * width;
   int N = width ;
-  const int size = N  * sizeof(int);
+  const int size = N  * sizeof(char);
   unsigned char* d_pic;
   cudaMalloc((void **)&d_pic, size);
 
