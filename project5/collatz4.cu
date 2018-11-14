@@ -27,7 +27,7 @@ Author: Martin Burtscher
 #include <cuda.h>
 #include <sys/time.h>
 
-static const int ThreadsPerBlock = 128;
+static const int ThreadsPerBlock = 512;
 
 //collatz kernel function
 static __global__ void  collatzKernel(const long range, int* maxlen)
