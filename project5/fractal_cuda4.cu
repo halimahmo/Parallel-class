@@ -39,8 +39,8 @@ static __global__ void  fractalKernel(const int width, const int frames, unsigne
   
   // compute frames
   const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x;
-  const int frame = idx / (width * width);
   if(frame < n){
+  const int frame = idx / (width * width);
     const float delta = Delta * pow(0.98f, frame);
     const float xMin = xMid - delta;
     const float yMin = yMid - delta;
@@ -90,8 +90,8 @@ int main(int argc, char *argv[])
   printf("computing %d frames of %d by %d fractal\n", frames, width, width);
 
   // allocate space for pic array on GPU
-  //int N = frames * width * width;
-  int N = width ;
+  int N = frames * width * width;
+  //int N = width ;
   const int size = N  * sizeof(int);
   unsigned char* d_pic;
   cudaMalloc((void **)&d_pic, size);
