@@ -34,7 +34,7 @@ static const double yMid =  0.55267;
 
 static const int ThreadsPerBlock = 512;
 
-static __global__ void  fractalKernel(const int width, const int frames, unsigned char* pic int n)
+static __global__ void  fractalKernel(const int width, const int frames, unsigned char* pic, int n)
 {
   
   // compute frames
