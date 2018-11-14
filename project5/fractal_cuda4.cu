@@ -28,9 +28,9 @@ Author: Martin Burtscher
 #include <cuda.h>
 #include "cs43805351.h"
 
-static const double Delta = 0.004;
-static const double xMid =  0.2389;
-static const double yMid =  0.55267;
+static const float Delta = 0.004f;
+static const float xMid =  0.2389f;
+static const float yMid =  0.55267f;
 
 static const int ThreadsPerBlock = 512;
 
@@ -41,20 +41,20 @@ static __global__ void  fractalKernel(const int width, const int frames, unsigne
   const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x;
   const int frame = idx / (width * width);
   if(frame < n){
-    const double delta = Delta * pow(0.98, frame);
-    const double xMin = xMid - delta;
-    const double yMin = yMid - delta;
-    const double dw = 2.0 * delta / width;
+    const float delta = Delta * pow(0.98f, frame);
+    const float xMin = xMid - delta;
+    const float yMin = yMid - delta;
+    const float dw = 2.0f * delta / width;
 
     const int row = (idx / width) % width; 
-      const double cy = yMin + row * dw;
+      const float cy = yMin + row * dw;
 
       const int col = idx % width;
-        const double cx = xMin + col * dw;
-        double x = cx;
-        double y = cy;
+        const float cx = xMin + col * dw;
+        float x = cx;
+        float y = cy;
         int depth = 256;
-        double x2, y2;
+        float x2, y2;
         do {
           x2 = x * x;
           y2 = y * y;
