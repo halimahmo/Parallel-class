@@ -38,6 +38,7 @@ static __global__ void  fractalKernel(const int width, const int frames, unsigne
 {
   
   // compute frames
+  const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x;
   const int frame = idx / (width * width);
   if(frame < n){
     const double delta = Delta * pow(0.98, frame);
