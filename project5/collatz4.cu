@@ -94,7 +94,8 @@ int main(int argc, char *argv[])
   timeval start, end;
   gettimeofday(&start, NULL);
 
-  collatzKernel<<<(range + ThreadsPerBlock - 1) / ThreadsPerBlock, ThreadsPerBlock>>>(range, d_maxlen);
+  //collatzKernel<<<(range + ThreadsPerBlock - 1) / ThreadsPerBlock, ThreadsPerBlock>>>(range, d_maxlen);
+  collatzKernel<<<((range/4 + ThreadsPerBlock) - 1) / ThreadsPerBlock, ThreadsPerBlock>>>(range, d_maxlen);
   cudaDeviceSynchronize();
 
 
