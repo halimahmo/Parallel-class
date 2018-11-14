@@ -97,7 +97,7 @@ int main(int argc, char *argv[])
   cudaMalloc((void **)&d_pic, size);
 
   //allocate space for pic array on host
-  unsigned char* pic = new unsigned char[N];
+  unsigned char* pic = new unsigned char[frames * width * width];
 
   //copying pic value to device
   if (cudaSuccess != cudaMemcpy(d_pic, &pic, size, cudaMemcpyHostToDevice)) {fprintf(stderr, "copying to device failed\n"); exit(-1);}
