@@ -39,7 +39,7 @@ static __global__ void  fractalKernel(const int width, const int frames, unsigne
   
   // compute frames
   const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x;
-  if(frame < n){
+  if(idx < n){
   const int frame = idx / (width * width);
     const double delta = Delta * pow(0.98, frame);
     const double xMin = xMid - delta;
