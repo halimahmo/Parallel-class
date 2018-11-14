@@ -90,8 +90,8 @@ int main(int argc, char *argv[])
   printf("computing %d frames of %d by %d fractal\n", frames, width, width);
 
   // allocate space for pic array on GPU
-  int N = frames * width * width;
-  //int N = width ;
+  //int N = frames * width * width;
+  int N = width ;
   const int size = N  * sizeof(int);
   unsigned char* d_pic;
   cudaMalloc((void **)&d_pic, size);
@@ -115,6 +115,7 @@ int main(int argc, char *argv[])
   const double runtime = end.tv_sec - start.tv_sec + (end.tv_usec - start.tv_usec) / 1000000.0;
   printf("compute time: %.3f s\n", runtime);
   CheckCuda();
+
   //copy result back to host
   if (cudaSuccess != cudaMemcpy(&pic, d_pic, size, cudaMemcpyDeviceToHost)) {fprintf(stderr, "copying from device failed\n"); exit(-1);}
 
