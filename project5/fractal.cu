@@ -91,15 +91,14 @@ int main(int argc, char *argv[])
 
   // allocate picture array on GPU
   int N = frames * width * width;
-
-  const int size = N * sizeof(char);
   unsigned char* d_pic;
+  const int size = N * sizeof(char);
   cudaMalloc((void **)&d_pic, size);
 
    //allocate space for pic array on host
    unsigned char* pic = new unsigned char[frames * width * width];
 
-  //copying pic value to device
+  //copying pic to device
   if (cudaSuccess != cudaMemcpy(d_pic, pic, size, cudaMemcpyHostToDevice)) {fprintf(stderr, "copying to device failed\n"); exit(-1);}
 
   // start time
@@ -115,6 +114,7 @@ int main(int argc, char *argv[])
   const double runtime = end.tv_sec - start.tv_sec + (end.tv_usec - start.tv_usec) / 1000000.0;
   printf("compute time: %.3f s\n", runtime);
   CheckCuda();
+  
   //copy result back to host
   if (cudaSuccess != cudaMemcpy(pic, d_pic, size, cudaMemcpyDeviceToHost)) {fprintf(stderr, "copying from device failed\n"); exit(-1);}
 

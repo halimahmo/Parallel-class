@@ -77,6 +77,7 @@ static void CheckCuda()
   }
 }
 
+
 int main(int argc, char *argv[])
 {
   printf("Fractal v1.7\n");
@@ -90,10 +91,9 @@ int main(int argc, char *argv[])
   printf("computing %d frames of %d by %d fractal\n", frames, width, width);
 
   // allocate space for pic array on GPU
-  //int N = frames * width * width;
-  int N = width ;
-  const int size = N  * sizeof(char);
+  int N = frames * width * width;
   unsigned char* d_pic;
+  const int size = N  * sizeof(char);
   cudaMalloc((void **)&d_pic, size);
 
   //allocate space for pic array on host
