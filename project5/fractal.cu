@@ -32,17 +32,23 @@ static const double Delta = 0.004;
 static const double xMid =  0.2389;
 static const double yMid =  0.55267;
 
-static void fractal(const int width, const int frames, unsigned char* pic)
+static const int ThreadsPerBlock = 512;
+
+static __global__ void  fractalKernel(const int width, const int frames, unsigned char* pic int n)
 {
+  
   // compute frames
-  for (int frame = 0; frame < frames; frame++) {
+  const int frame = idx / (width * width);
+  if(frame < n){
     const double delta = Delta * pow(0.98, frame);
     const double xMin = xMid - delta;
     const double yMin = yMid - delta;
     const double dw = 2.0 * delta / width;
-    for (int row = 0; row < width; row++) {
+
+    const int row = (idx / width) % width; 
       const double cy = yMin + row * dw;
-      for (int col = 0; col < width; col++) {
+
+      const int col = idx % width;
         const double cx = xMin + col * dw;
         double x = cx;
         double y = cy;
@@ -57,7 +63,16 @@ static void fractal(const int width, const int frames, unsigned char* pic)
         } while ((depth > 0) && ((x2 + y2) < 5.0));
         pic[frame * width * width + row * width + col] = (unsigned char)depth;
       }
-    }
+}
+
+//ChecCuda function
+static void CheckCuda()
+{
+  cudaError_t e;
+  cudaDeviceSynchronize();
+  if (cudaSuccess != (e = cudaGetLastError())) {
+    fprintf(stderr, "CUDA error %d: %s\n", e, cudaGetErrorString(e));
+    exit(-1);
   }
 }
 
@@ -73,19 +88,31 @@ int main(int argc, char *argv[])
   if (frames < 1) {fprintf(stderr, "error: num_frames must be at least 1\n"); exit(-1);}
   printf("computing %d frames of %d by %d fractal\n", frames, width, width);
 
-  // allocate picture array
-  unsigned char* pic = new unsigned char[frames * width * width];
+  // allocate picture array on GPU
+  int N = frames * width * width;
+  const int size = N  * sizeof(int);
+  unsigned char* pic = new unsigned char[size];
+  unsigned char* d_pic;
+  cudaMalloc((void **)&d_pic, size);
+
+  //copying pic value to device
+  if (cudaSuccess != cudaMemcpy(d_pic, &pic, size, cudaMemcpyHostToDevice)) {fprintf(stderr, "copying to device failed\n"); exit(-1);}
 
   // start time
   timeval start, end;
   gettimeofday(&start, NULL);
 
-  fractal(width, frames, pic);
-
+  // launch GPU kernel 
+  fractalKernel<<<(N + ThreadsPerBlock - 1) / ThreadsPerBlock, ThreadsPerBlock>>>(width, frames, pic, N);
+  cudaDeviceSynchronize();
+  
   // end time
   gettimeofday(&end, NULL);
   const double runtime = end.tv_sec - start.tv_sec + (end.tv_usec - start.tv_usec) / 1000000.0;
   printf("compute time: %.3f s\n", runtime);
+  CheckCuda();
+  //copy result back to host
+  if (cudaSuccess != cudaMemcpy(&pic, d_pic, size, cudaMemcpyDeviceToHost)) {fprintf(stderr, "copying from device failed\n"); exit(-1);}
 
   // verify result by writing frames to BMP files
   if ((width <= 256) && (frames <= 100)) {
@@ -97,6 +124,7 @@ int main(int argc, char *argv[])
   }
 
   delete [] pic;
+  cudaFree(d_pic);
   return 0;
 }
 

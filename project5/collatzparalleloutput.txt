@@ -33,3 +33,8 @@ compute time: 0.000745 s
 running 500-element vector addition
 compute time: 0.000049 s
 Mon Nov 12 23:02:19 CST 2018
+
+10000
+100000
+1000000
+10000000
