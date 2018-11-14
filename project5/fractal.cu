@@ -100,7 +100,7 @@ int main(int argc, char *argv[])
    unsigned char* pic = new unsigned char[frames * width * width];
 
   //copying pic value to device
-  if (cudaSuccess != cudaMemcpy(d_pic, &pic, size, cudaMemcpyHostToDevice)) {fprintf(stderr, "copying to device failed\n"); exit(-1);}
+  if (cudaSuccess != cudaMemcpy(d_pic, pic, size, cudaMemcpyHostToDevice)) {fprintf(stderr, "copying to device failed\n"); exit(-1);}
 
   // start time
   timeval start, end;
@@ -116,7 +116,7 @@ int main(int argc, char *argv[])
   printf("compute time: %.3f s\n", runtime);
   CheckCuda();
   //copy result back to host
-  if (cudaSuccess != cudaMemcpy(&pic, d_pic, size, cudaMemcpyDeviceToHost)) {fprintf(stderr, "copying from device failed\n"); exit(-1);}
+  if (cudaSuccess != cudaMemcpy(pic, d_pic, size, cudaMemcpyDeviceToHost)) {fprintf(stderr, "copying from device failed\n"); exit(-1);}
 
   // verify result by writing frames to BMP files
   if ((width <= 256) && (frames <= 100)) {
