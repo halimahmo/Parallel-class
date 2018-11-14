@@ -41,7 +41,7 @@ static __global__ void  fractalKernel(const int width, const int frames, unsigne
   const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x;
   if(idx < n){
   const int frame = idx / (width * width);
-    const float delta = Delta * pow(0.98f, frame);
+    const float delta = Delta * powf(0.98f, frame);
     const float xMin = xMid - delta;
     const float yMin = yMid - delta;
     const float dw = 2.0f * delta / width;
@@ -107,7 +107,7 @@ int main(int argc, char *argv[])
   gettimeofday(&start, NULL);
 
   // launch GPU kernel 
-  fractalKernel<<<(N + ThreadsPerBlock - 1) / ThreadsPerBlock, ThreadsPerBlock>>>(width, frames, pic, N);
+  fractalKernel<<<(N + ThreadsPerBlock - 1) / ThreadsPerBlock, ThreadsPerBlock>>>(width, frames, d_pic, N);
   cudaDeviceSynchronize();
   
   // end time

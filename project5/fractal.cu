@@ -114,7 +114,7 @@ int main(int argc, char *argv[])
   const double runtime = end.tv_sec - start.tv_sec + (end.tv_usec - start.tv_usec) / 1000000.0;
   printf("compute time: %.3f s\n", runtime);
   CheckCuda();
-  
+
   //copy result back to host
   if (cudaSuccess != cudaMemcpy(pic, d_pic, size, cudaMemcpyDeviceToHost)) {fprintf(stderr, "copying from device failed\n"); exit(-1);}
 
