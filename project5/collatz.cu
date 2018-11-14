@@ -32,7 +32,7 @@ static const int ThreadsPerBlock = 512;
 //collatz kernel function
 static __global__ void  collatzKernel(const long range, int* maxlen)
 {
-  int newMaxlen = 0;
+  //int newMaxlen = 0;
   // compute sequence lengths
   const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x;
   if(idx < range){
