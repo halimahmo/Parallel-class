@@ -107,7 +107,7 @@ int main(int argc, char *argv[])
   gettimeofday(&start, NULL);
 
   // launch GPU kernel 
-  fractalKernel<<<(N + ThreadsPerBlock - 1) / ThreadsPerBlock, ThreadsPerBlock>>>(width, frames, pic, N);
+  fractalKernel<<<(N + ThreadsPerBlock - 1) / ThreadsPerBlock, ThreadsPerBlock>>>(width, frames, d_pic, N);
   cudaDeviceSynchronize();
   
   // end time
