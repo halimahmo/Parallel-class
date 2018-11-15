@@ -36,8 +36,9 @@ static __global__ void  collatzKernel(const long range, int* maxlen)
   const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x;
   int beg = (idx * 4) + 1;
   int end = ((idx + 1 )* 4) + 1;
+  int localMax = 0;
 
-    if(idx < range/4){
+  if(idx < range/4){
     for(int i = beg; i < end; i++){
     long val = i;
     int len = 1;
@@ -50,11 +51,12 @@ static __global__ void  collatzKernel(const long range, int* maxlen)
       }
     }
 
-    //thread updating maxlen using atomicMax
-    if (*maxlen < len) atomicMax(maxlen, len);
-   }
+    if(localMax < len){localMax = len;}
+    
+    }
+   //thread updating maxlen using atomicMax
+  if (*maxlen < localMax) atomicMax(maxlen, localMax);
   }
-
 }
 
 static void CheckCuda()
