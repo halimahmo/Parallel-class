@@ -1,0 +1,9 @@
+Thu Nov  1 00:18:37 CDT 2018
+TSP v1.6
+input: /home/00976/burtsche/Parallel/nrw1379.btsp
+cities: 1379
+population: 39
+generations: 200000
+compute time: 7.756 s
+tour length: 376385
+Thu Nov  1 00:18:45 CDT 2018

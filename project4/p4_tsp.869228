@@ -1,0 +1,12 @@
+Wed Oct 31 12:12:42 CDT 2018
+/tmp/slurmd/job869228/slurm_script: line 12: ./tsp3_omp: No such file or directory
+/tmp/slurmd/job869228/slurm_script: line 13: ./tsp3_omp: No such file or directory
+/tmp/slurmd/job869228/slurm_script: line 14: ./tsp3_omp: No such file or directory
+TSP v1.6
+input: /home/00976/burtsche/Parallel/nrw1379.btsp
+cities: 1379
+population: 38
+generations: 200000
+compute time: 54.090 s
+tour length: 350469
+Wed Oct 31 12:13:36 CDT 2018

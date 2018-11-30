@@ -1,0 +1,30 @@
+Wed Oct 31 16:27:11 CDT 2018
+TSP v1.6
+input: /home/00976/burtsche/Parallel/nrw1379.btsp
+cities: 1379
+population: 38
+generations: 200000
+compute time: 5.562 s
+tour length: 350469
+TSP v1.6
+input: /home/00976/burtsche/Parallel/nrw1379.btsp
+cities: 1379
+population: 38
+generations: 200000
+compute time: 5.461 s
+tour length: 350469
+TSP v1.6
+input: /home/00976/burtsche/Parallel/nrw1379.btsp
+cities: 1379
+population: 38
+generations: 200000
+compute time: 5.528 s
+tour length: 350469
+TSP v1.6
+input: /home/00976/burtsche/Parallel/nrw1379.btsp
+cities: 1379
+population: 38
+generations: 200000
+compute time: 54.705 s
+tour length: 350469
+Wed Oct 31 16:28:23 CDT 2018

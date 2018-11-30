@@ -36,7 +36,7 @@ static __global__ void  collatzKernel(const long range, int* maxlen)
   const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x;
   int beg = (idx * 4) + 1;
   int end = ((idx + 1 )* 4) + 1;
-  int localMax = 0;
+  int newMaxlen = 0;
 
   if(idx < range/4){
     for(int i = beg; i < end; i++){
@@ -51,11 +51,15 @@ static __global__ void  collatzKernel(const long range, int* maxlen)
       }
     }
 
+<<<<<<< HEAD
     if(localMax < len) {localMax = len;}
+=======
+    if(newMaxlen < len) {newMaxlen = len;}
+>>>>>>> e018abb6a5f7bfe0dd92a35580dd7fa291dcbce4
     
     }
    //thread updating maxlen using atomicMax
-  if (*maxlen < localMax) atomicMax(maxlen, localMax);
+  if (*maxlen < newMaxlen) atomicMax(maxlen, newMaxlen);
   }
 }
 

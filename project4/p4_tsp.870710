@@ -1,0 +1,23 @@
+Thu Nov  1 00:26:31 CDT 2018
+TSP v1.6
+input: /home/00976/burtsche/Parallel/nrw1379.btsp
+cities: 1379
+population: 38
+generations: 200000
+compute time: 5.336 s
+tour length: 350469
+TSP v1.6
+input: /home/00976/burtsche/Parallel/nrw1379.btsp
+cities: 1379
+population: 40
+generations: 200000
+compute time: 7.583 s
+tour length: 369862
+TSP v1.6
+input: /home/00976/burtsche/Parallel/nrw1379.btsp
+cities: 1379
+population: 48
+generations: 200000
+compute time: 9.209 s
+tour length: 372431
+Thu Nov  1 00:26:54 CDT 2018

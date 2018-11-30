@@ -12,6 +12,8 @@ date
 ./collatz 1000000
 ./collatz 10000000
 ./collatz 100000000
+./collatz 1000000000
 
 date
+
 

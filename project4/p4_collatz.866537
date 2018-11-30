@@ -1,0 +1,667 @@
+Sun Oct 28 15:20:09 CDT 2018
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 1
+compute time: 7.087 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 2
+compute time: 3.735 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 3
+compute time: 2.512 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 4
+compute time: 1.942 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 5
+compute time: 1.563 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 6
+compute time: 1.424 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 7
+compute time: 1.181 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 8
+compute time: 1.036 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 9
+compute time: 0.932 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 10
+compute time: 0.857 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 11
+compute time: 0.793 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 12
+compute time: 0.738 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 13
+compute time: 0.701 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 14
+compute time: 0.681 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 15
+compute time: 0.596 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 16
+compute time: 0.551 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 17
+compute time: 0.524 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 18
+compute time: 0.502 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 19
+compute time: 0.490 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 1
+compute time: 7.087 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 2
+compute time: 3.706 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 3
+compute time: 2.535 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 4
+compute time: 1.933 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 5
+compute time: 1.595 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 6
+compute time: 1.389 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 7
+compute time: 1.184 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 8
+compute time: 1.044 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 9
+compute time: 0.950 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 10
+compute time: 0.852 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 11
+compute time: 0.797 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 12
+compute time: 0.739 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 13
+compute time: 0.682 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 14
+compute time: 0.631 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 15
+compute time: 0.591 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 16
+compute time: 0.553 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 17
+compute time: 0.522 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 18
+compute time: 0.497 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 19
+compute time: 0.592 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 1
+compute time: 7.086 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 2
+compute time: 3.754 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 3
+compute time: 2.510 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 4
+compute time: 1.928 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 5
+compute time: 1.587 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 6
+compute time: 1.349 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 7
+compute time: 1.162 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 8
+compute time: 1.039 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 9
+compute time: 0.950 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 10
+compute time: 0.859 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 11
+compute time: 0.800 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 12
+compute time: 0.732 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 13
+compute time: 0.677 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 14
+compute time: 0.638 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 15
+compute time: 0.594 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 16
+compute time: 0.557 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 17
+compute time: 0.528 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 18
+compute time: 0.499 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 19
+compute time: 0.478 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 1
+compute time: 7.085 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 2
+compute time: 3.750 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 3
+compute time: 2.564 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 4
+compute time: 1.943 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 5
+compute time: 1.574 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 6
+compute time: 1.340 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 7
+compute time: 1.174 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 8
+compute time: 1.032 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 9
+compute time: 0.945 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 10
+compute time: 0.856 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 11
+compute time: 0.793 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 12
+compute time: 0.749 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 13
+compute time: 0.758 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 14
+compute time: 0.649 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 15
+compute time: 0.589 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 16
+compute time: 0.553 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 17
+compute time: 0.525 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 18
+compute time: 0.501 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 19
+compute time: 0.483 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 1
+compute time: 7.114 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 2
+compute time: 3.729 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 3
+compute time: 2.507 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 4
+compute time: 1.927 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 5
+compute time: 1.595 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 6
+compute time: 1.337 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 7
+compute time: 1.182 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 8
+compute time: 1.029 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 9
+compute time: 0.939 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 10
+compute time: 0.863 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 11
+compute time: 0.801 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 12
+compute time: 0.751 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 13
+compute time: 0.717 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 14
+compute time: 0.633 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 15
+compute time: 0.594 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 16
+compute time: 0.550 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 17
+compute time: 0.526 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 18
+compute time: 0.495 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 19
+compute time: 0.467 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 1
+compute time: 7.103 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 2
+compute time: 3.707 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 3
+compute time: 2.499 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 4
+compute time: 1.926 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 5
+compute time: 1.575 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 6
+compute time: 1.340 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 7
+compute time: 1.172 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 8
+compute time: 1.036 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 9
+compute time: 0.952 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 10
+compute time: 0.842 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 11
+compute time: 0.803 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 12
+compute time: 0.732 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 13
+compute time: 0.676 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 14
+compute time: 0.628 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 15
+compute time: 0.597 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 16
+compute time: 0.553 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 17
+compute time: 0.524 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 18
+compute time: 0.514 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 19
+compute time: 0.489 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 1
+compute time: 7.085 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 2
+compute time: 3.759 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 3
+compute time: 2.582 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 4
+compute time: 1.941 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 5
+compute time: 1.566 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 6
+compute time: 1.328 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 7
+compute time: 1.167 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 8
+compute time: 1.033 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 9
+compute time: 0.972 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 10
+compute time: 0.853 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 11
+compute time: 0.798 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 12
+compute time: 0.731 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 13
+compute time: 0.676 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 14
+compute time: 0.631 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 15
+compute time: 0.593 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 16
+compute time: 0.607 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 17
+compute time: 0.547 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 18
+compute time: 0.491 s
+longest sequence: 705 elements
+Collatz v1.0
+range: 1, ..., 20000000
+thread requested: 19
+compute time: 0.480 s
+longest sequence: 705 elements
+Sun Oct 28 15:23:38 CDT 2018
