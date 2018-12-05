@@ -101,7 +101,7 @@ int main(int argc, char *argv[])
 
   int maxlen;
   // todo: MPI_Reduce(...);
-  MPI_Reduce(&my_maxlen, &maxlen, 1, MPI_INTEGER, MPI_MAX, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&cpu_maxlen, &maxlen, 1, MPI_INTEGER, MPI_MAX, 0, MPI_COMM_WORLD);
 
   if (my_rank == 0) {
     gettimeofday(&end, NULL);
