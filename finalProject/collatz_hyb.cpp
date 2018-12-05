@@ -38,9 +38,9 @@ static int collatz(const long start, const long stop)
   const long range = stop - start;
   // todo: OpenMP code with 19 threads, default(none), a reduction, and a block-cyclic schedule with a block size of 100
 // compute sequence lengths
-  #pragma omp parallel for num_threads(19) default(none) reduction(max:maxlen) schedule(guided, 100)
+  #pragma omp parallel for num_threads(19) default(none) reduction(max:maxlen) schedule(static, 100)
   for (long i = 1; i <= range; i++) {
-    long val = start + i;
+    long val = i;
     int len = 1;
     while (val != 1) {
       len++;
@@ -101,6 +101,7 @@ int main(int argc, char *argv[])
 
   int maxlen;
   // todo: MPI_Reduce(...);
+  MPI_Reduce(&my_maxlen, &maxlen, 1, MPI_INTEGER, MPI_MAX, 0, MPI_COMM_WORLD);
 
   if (my_rank == 0) {
     gettimeofday(&end, NULL);
