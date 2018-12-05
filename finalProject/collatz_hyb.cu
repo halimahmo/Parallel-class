@@ -47,7 +47,6 @@ static __global__ void CollatzKernel(const long start, const long stop, int* max
         val = 3 * val + 1;  // odd
       }
     }
-
     //thread updating maxlen using atomicMax
     if (*maxlen_d < len) atomicMax(maxlen_d, len);
   }
