@@ -37,8 +37,24 @@ static int collatz(const long start, const long stop)
   int maxlen = 0;
 
   // todo: OpenMP code with 19 threads, default(none), a reduction, and a block-cyclic schedule with a block size of 100
+// compute sequence lengths
+  #pragma omp parallel for num_threads(19) default(none) reduction(max:maxlen) schedule(guided, 100)
+  for (long i = 1; i <= range; i++) {
+    long val = i;
+    int len = 1;
+    while (val != 1) {
+      len++;
+      if ((val % 2) == 0) {
+        val = val / 2;  // even
+      } else {
+        val = 3 * val + 1;  // odd
+      }
+    }
+    if (maxlen < len) maxlen = len;
+  }
 
   return maxlen;
+ 
 }
 
 int main(int argc, char *argv[])
