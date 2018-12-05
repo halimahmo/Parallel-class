@@ -39,13 +39,12 @@ void GPU_Fini(const int gpu_frames, const int width, unsigned char* pic, unsigne
 static void fractal(const int start_frame, const int cpu_frames, const int width, unsigned char* pic)
 {
   // todo: use OpenMP to compute the frames with 19 threads, default(none), and a cyclic schedule
-  #pragma omp parallel num_threads(19) default(none) shared(pic) schedule(static, 1)
+  #pragma omp parallel for num_threads(19) default(none) shared(cpu_frames, width, pic) schedule(static, 1)
   for (int frame = 0; frame < frames; frame++) {
     const double delta = Delta * pow(0.98, frame);
     const double xMin = xMid - delta;
     const double yMin = yMid - delta;
     const double dw = 2.0 * delta / width;
-    #pragma omp for
     for (int row = 0; row < width; row++) {
       const double cy = yMin + row * dw;
       for (int col = 0; col < width; col++) {
