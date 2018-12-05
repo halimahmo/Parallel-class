@@ -40,7 +40,7 @@ static int collatz(const long start, const long stop)
 // compute sequence lengths
   #pragma omp parallel for num_threads(19) default(none) reduction(max:maxlen) schedule(guided, 100)
   for (long i = 1; i <= range; i++) {
-    long val = i;
+    long val = start + i;
     int len = 1;
     while (val != 1) {
       len++;
