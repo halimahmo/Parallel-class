@@ -34,10 +34,11 @@ static __global__ void CollatzKernel(const long start, const long stop, int* max
 {
   // todo: process from start (exclusive) to stop (inclusive) with one thread per value (based on code from previous project)
   // compute sequence lengths
-  //const long x = stop - start;
-  const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x + start;
-  if(idx <= stop){
-    long val = idx + 1;
+
+  const long x = stop - start;
+  const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x;
+  if(idx <= x){
+    long val = idx + start + 1;
     int len = 1;
     while (val != 1) {
       len++;
@@ -47,6 +48,7 @@ static __global__ void CollatzKernel(const long start, const long stop, int* max
         val = 3 * val + 1;  // odd
       }
     }
+
     //thread updating maxlen using atomicMax
     if (*maxlen_d < len) atomicMax(maxlen_d, len);
   }
