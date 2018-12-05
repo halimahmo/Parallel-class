@@ -133,13 +133,19 @@ int main(int argc, char *argv[])
 }
 
 module load cuda
-nvcc -O3 -arch=sm_35 -c fractal_hyb.cu -o CUfractal.o
-icc -O3 -xhost -openmp -c fractal_hyb1.cpp -o C1fractal.o
-icc -xhost -openmp -O3 C1fractal.o CUfractal.o -lcudart -L$TACC_CUDA_LIB -o fractal_hyb1
+nvcc -O3 -arch=sm_35 -c collatz_hyb.cu -o CUcollatz.o
+icc -O3 -xhost -openmp -c collatz_hyb.cpp -o C1collatz.o
+icc -xhost -openmp -O3 C1collatz.o CUcollatz.o -lcudart -L$TACC_CUDA_LIB -o collatz_hyb
 
 
 module load cuda
 nvcc -O3 -arch=sm_35 -c fractal_hyb.cu -o CUfractal.o
 mpicxx -O3 -xhost -openmp -c fractal_hyb2.cpp -o C2fractal.o
 icc -xhost -openmp -O3 C1fractal.o CUfractal.o -lcudart -L$TACC_CUDA_LIB -o fractal_hyb2
+
+module load cuda
+nvcc -O3 -arch=sm_35 -c fractal_hyb.cu -o CUfractal.o
+mpicxx -O3 -xhost -openmp -c fractal_hyb2.cpp -o C2fractal.o
+mpicxx -xhost -openmp -O3 C2fractal.o CUfractal.o -lcudart -L$TACC_CUDA_LIB -o fractal_hyb2
+
 
