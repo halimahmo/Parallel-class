@@ -40,7 +40,7 @@ static void fractal(const int start_frame, const int cpu_frames, const int width
 {
   // todo: use OpenMP to compute the frames with 19 threads, default(none), and a cyclic schedule
   #pragma omp parallel for num_threads(19) default(none) shared(cpu_frames, width, pic) schedule(static, 1)
-  for (int frame = 0; frame < cpu_frames; frame++) {
+  for (int frame = 0; frame < cp_frames; frame++) {
     const double delta = Delta * pow(0.98, frame);
     const double xMin = xMid - delta;
     const double yMin = yMid - delta;
@@ -106,7 +106,7 @@ int main(int argc, char *argv[])
   printf("compute time: %.3f s\n", runtime);
 
   // verify result by writing frames to BMP files
-  if ((width <= 255) && (frames <= 10)) {
+  if ((width <= 255) && (frames <= 100)) {
     for (int frame = 0; frame < frames; frame++) {
       char name[32];
       sprintf(name, "fractal%d.bmp", frame + 1000);
