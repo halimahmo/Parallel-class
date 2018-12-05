@@ -1,0 +1,24 @@
+#!/bin/bash
+#SBATCH -A CS4380_5351_7332 # account name
+#SBATCH -J p6_collatz       # job name
+#SBATCH -o p6_collatz.%j    # name of the output and error file
+#SBATCH -N 1                # total number of nodes requested
+#SBATCH -n 1                # total number of tasks requested
+#SBATCH -p gpu              # queue name
+#SBATCH -t 00:02:00         # expected maximum runtime (hh:mm:ss)
+
+date
+
+ibrun tacc_affinity ./collatz_hyb 100000000 0
+ibrun tacc_affinity ./collatz_hyb 100000000 10
+ibrun tacc_affinity ./collatz_hyb 100000000 20
+ibrun tacc_affinity ./collatz_hyb 100000000 30
+ibrun tacc_affinity ./collatz_hyb 100000000 40
+ibrun tacc_affinity ./collatz_hyb 100000000 50
+ibrun tacc_affinity ./collatz_hyb 100000000 60
+ibrun tacc_affinity ./collatz_hyb 100000000 70
+ibrun tacc_affinity ./collatz_hyb 100000000 80
+ibrun tacc_affinity ./collatz_hyb 100000000 90
+ibrun tacc_affinity ./collatz_hyb 100000000 100
+
+date
