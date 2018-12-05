@@ -35,7 +35,7 @@ int GPU_Fini();
 static int collatz(const long start, const long stop)
 {
   int maxlen = 0;
-
+  const long range = stop - start;
   // todo: OpenMP code with 19 threads, default(none), a reduction, and a block-cyclic schedule with a block size of 100
 // compute sequence lengths
   #pragma omp parallel for num_threads(19) default(none) reduction(max:maxlen) schedule(guided, 100)
