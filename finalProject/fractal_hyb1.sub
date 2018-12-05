@@ -9,6 +9,7 @@
 
 date
 
+./fractal_hyb1 250 0 100
 ./fractal_hyb1 512 0 640
 ./fractal_hyb1 512 8 632
 ./fractal_hyb1 512 16 624

@@ -1,0 +1,189 @@
+Wed Dec  5 13:20:57 CST 2018
+TACC: Starting up job 884171
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (0 CPU frames and 640 GPU frames)
+compute time: 0.590 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (0 CPU frames and 640 GPU frames)
+compute time: 0.602 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (0 CPU frames and 640 GPU frames)
+compute time: 0.599 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (0 CPU frames and 640 GPU frames)
+compute time: 0.592 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884171
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (64 CPU frames and 576 GPU frames)
+compute time: 0.683 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (64 CPU frames and 576 GPU frames)
+compute time: 0.670 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (64 CPU frames and 576 GPU frames)
+compute time: 0.672 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (64 CPU frames and 576 GPU frames)
+compute time: 0.646 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884171
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (128 CPU frames and 512 GPU frames)
+compute time: 1.149 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (128 CPU frames and 512 GPU frames)
+compute time: 1.145 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (128 CPU frames and 512 GPU frames)
+compute time: 1.238 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (128 CPU frames and 512 GPU frames)
+compute time: 1.194 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884171
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (192 CPU frames and 448 GPU frames)
+compute time: 1.999 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (192 CPU frames and 448 GPU frames)
+compute time: 1.979 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (192 CPU frames and 448 GPU frames)
+compute time: 1.972 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (192 CPU frames and 448 GPU frames)
+compute time: 2.027 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884171
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (256 CPU frames and 384 GPU frames)
+compute time: 2.746 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (256 CPU frames and 384 GPU frames)
+compute time: 2.745 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (256 CPU frames and 384 GPU frames)
+compute time: 2.762 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (256 CPU frames and 384 GPU frames)
+compute time: 2.764 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884171
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (320 CPU frames and 320 GPU frames)
+compute time: 3.524 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (320 CPU frames and 320 GPU frames)
+compute time: 3.506 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (320 CPU frames and 320 GPU frames)
+compute time: 3.507 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (320 CPU frames and 320 GPU frames)
+compute time: 3.679 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884171
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (384 CPU frames and 256 GPU frames)
+compute time: 4.437 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (384 CPU frames and 256 GPU frames)
+compute time: 4.429 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (384 CPU frames and 256 GPU frames)
+compute time: 4.451 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (384 CPU frames and 256 GPU frames)
+compute time: 4.436 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884171
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (448 CPU frames and 192 GPU frames)
+compute time: 5.188 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (448 CPU frames and 192 GPU frames)
+compute time: 5.207 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (448 CPU frames and 192 GPU frames)
+compute time: 5.407 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (448 CPU frames and 192 GPU frames)
+compute time: 5.239 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884171
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (512 CPU frames and 128 GPU frames)
+compute time: 5.967 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (512 CPU frames and 128 GPU frames)
+compute time: 5.959 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (512 CPU frames and 128 GPU frames)
+compute time: 5.972 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (512 CPU frames and 128 GPU frames)
+compute time: 6.013 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884171
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (576 CPU frames and 64 GPU frames)
+compute time: 6.896 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (576 CPU frames and 64 GPU frames)
+compute time: 6.929 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (576 CPU frames and 64 GPU frames)
+compute time: 6.904 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (576 CPU frames and 64 GPU frames)
+compute time: 6.884 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884171
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (640 CPU frames and 0 GPU frames)
+compute time: 7.686 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (640 CPU frames and 0 GPU frames)
+compute time: 7.651 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (640 CPU frames and 0 GPU frames)
+compute time: 7.651 s
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (640 CPU frames and 0 GPU frames)
+compute time: 7.650 s
+ 
+TACC: Shutdown complete. Exiting.
+Wed Dec  5 13:21:52 CST 2018
