@@ -60,7 +60,7 @@ static __global__ void FractalKernel(const int start_frame, const int gpu_frames
           x = x2 - y2 + cx;
           depth--;
         } while ((depth > 0) && ((x2 + y2) < 5.0));
-        pic[frame * width * width + row * width + col] = (unsigned char)depth;
+        pic_d[frame * width * width + row * width + col] = (unsigned char)depth;
       }
 }
 
@@ -74,13 +74,13 @@ unsigned char* GPU_Init(const int gpu_frames, const int width)
 void GPU_Exec(const int start_frame, const int gpu_frames, const int width, unsigned char* pic_d)
 {
   // todo: launch the kernel with ThreadsPerBlock and the appropriate number of blocks
-  FractalKernel<<<((gpu_frames - start_frame) * width * width + ThreadsPerBlock-1) / ThreadsPerBlock, ThreadsPerBlock>>>(start_frame, end_frame, width, pic_d);
+  FractalKernel<<<((gpu_frames - start_frame) * width * width + ThreadsPerBlock-1) / ThreadsPerBlock, ThreadsPerBlock>>>(start_frame, gpu_frames, width, pic_d);
   //cudaDeviceSynchronize();
 }
 
 void GPU_Fini(const int gpu_frames, const int width, unsigned char* pic, unsigned char* pic_d)
 {
   // todo: copy the result from the device to the host and free the device memory
-  if (cudaSuccess != cudaMemcpy(pic, d_pic, gpu_frames * width * width * sizeof(unsigned char), cudaMemcpyDeviceToHost)) {fprintf(stderr, "copying from device failed\n"); exit(-1);}
-  cudaFree(d_pic);
+  if (cudaSuccess != cudaMemcpy(pic, pic_d, gpu_frames * width * width * sizeof(unsigned char), cudaMemcpyDeviceToHost)) {fprintf(stderr, "copying from device failed\n"); exit(-1);}
+  cudaFree(pic_d);
 }
