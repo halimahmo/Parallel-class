@@ -62,7 +62,7 @@ static void fractal(const int start_frame, const int cpu_frames, const int width
           x = x2 - y2 + cx;
           depth--;
         } while ((depth > 0) && ((x2 + y2) < 5.0));
-        pic_d[frame * width * width + row * width + col] = (unsigned char)depth;
+        pic[frame * width * width + row * width + col] = (unsigned char)depth;
       }
     }
   }
