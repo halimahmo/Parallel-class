@@ -106,7 +106,7 @@ int main(int argc, char *argv[])
   unsigned char* my_pic = new unsigned char[frames * width *width];
   unsigned char* pic_d = GPU_Init(gpu_frames, width);
 
-if (my_rank == 0){}
+if (my_rank == 0){
   pic = new unsigned char[(frames * comm_sz) * width * width];
 }
   // start time
@@ -132,7 +132,7 @@ if (my_rank == 0){}
       printf("compute time: %.3f s\n", runtime);
 
   // verify result by writing frames to BMP files
-  if ((width <= 256) && ((frames * comm_sz) <= 100)  &&  (my_rank == 0) ){
+  if ((width <= 256) && ((frames * comm_sz) <= 100)){
     for (int frame = 0; frame < (frames * comm_sz); frame++) {
       char name[32];
       sprintf(name, "fractal%d.bmp", frame + 1000);
