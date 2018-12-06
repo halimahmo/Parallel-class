@@ -63,15 +63,13 @@ static void fractal(const int start_frame, const int cpu_frames, const int width
           x = x2 - y2 + cx;
           depth--;
         } while ((depth > 0) && ((x2 + y2) < 5.0));
-        pic[(frame - start_frame) * width * width + row * width + col] = (unsigned char)depth;
-      }
-    }
+        pic[(frame - start_frame) * width * wq1 
   }
 }
 
 int main(int argc, char *argv[])
 {
-  int comm_sz
+  int comm_sz;
   int my_rank;
 
   MPI_Init(NULL, NULL);

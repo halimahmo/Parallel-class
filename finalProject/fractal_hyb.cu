@@ -37,7 +37,7 @@ static __global__ void FractalKernel(const int start_frame, const int gpu_frames
 {
 
   // compute frames
-  const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x * width * width;
+  const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x + start_frame * width * width;
   if(idx < (gpu_frames + start_frame) * (width * width)){
     const int frame = idx / (width * width);
     const int row = (idx / width) % width; 
