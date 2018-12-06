@@ -136,7 +136,7 @@ if (my_rank == 0){
     for (int frame = 0; frame < (frames * comm_sz); frame++) {
       char name[32];
       sprintf(name, "fractal%d.bmp", frame + 1000);
-      writeBMP(width, width, &n_pic[frame * width * width], name);
+      writeBMP(width, width, &pic[frame * width * width], name);
         }
     }
   }
