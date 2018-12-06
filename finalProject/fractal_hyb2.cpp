@@ -101,7 +101,6 @@ int main(int argc, char *argv[])
   const int cpu_start_frame = my_rank * frames;
   const int gpu_start_frame = cpu_start_frame + cpu_frames;
 
-
   // allocate picture arrays
   unsigned char* pic ;
   unsigned char* my_pic = new unsigned char[frames * width *width];
