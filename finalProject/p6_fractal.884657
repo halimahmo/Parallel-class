@@ -1,0 +1,98 @@
+Wed Dec  5 23:49:57 CST 2018
+TACC: Starting up job 884657
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+./fractal_hyb2: error while loading shared libraries: libcudart.so.8.0: cannot open shared object file: No such file or directory
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 5622) exited with status 127
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884657
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+./fractal_hyb2: error while loading shared libraries: libcudart.so.8.0: cannot open shared object file: No such file or directory
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 5779) exited with status 127
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884657
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+./fractal_hyb2: error while loading shared libraries: libcudart.so.8.0: cannot open shared object file: No such file or directory
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 5939) exited with status 127
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884657
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+./fractal_hyb2: error while loading shared libraries: libcudart.so.8.0: cannot open shared object file: No such file or directory
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 6096) exited with status 127
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884657
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+./fractal_hyb2: error while loading shared libraries: libcudart.so.8.0: cannot open shared object file: No such file or directory
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 6251) exited with status 127
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884657
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+./fractal_hyb2: error while loading shared libraries: libcudart.so.8.0: cannot open shared object file: No such file or directory
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 6406) exited with status 127
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884657
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+./fractal_hyb2: error while loading shared libraries: libcudart.so.8.0: cannot open shared object file: No such file or directory
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 6561) exited with status 127
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884657
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+./fractal_hyb2: error while loading shared libraries: libcudart.so.8.0: cannot open shared object file: No such file or directory
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 6719) exited with status 127
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884657
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+./fractal_hyb2: error while loading shared libraries: libcudart.so.8.0: cannot open shared object file: No such file or directory
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 6874) exited with status 127
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884657
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+./fractal_hyb2: error while loading shared libraries: libcudart.so.8.0: cannot open shared object file: No such file or directory
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 7029) exited with status 127
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884657
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+./fractal_hyb2: error while loading shared libraries: libcudart.so.8.0: cannot open shared object file: No such file or directory
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 7184) exited with status 127
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884657
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+./fractal_hyb2: error while loading shared libraries: libcudart.so.8.0: cannot open shared object file: No such file or directory
+[c221-302.maverick.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 7339) exited with status 127
+TACC: MPI job exited with code: 1
+ 
+TACC: Shutdown complete. Exiting.
+Wed Dec  5 23:50:14 CST 2018
