@@ -1,0 +1,90 @@
+Thu Dec  6 00:33:29 CST 2018
+TACC: Starting up job 884717
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (0 CPU frames and 640 GPU frames)
+compute time: 0.236 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884717
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (64 CPU frames and 576 GPU frames)
+compute time: 0.407 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884717
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (128 CPU frames and 512 GPU frames)
+compute time: 0.452 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884717
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (192 CPU frames and 448 GPU frames)
+compute time: 0.642 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884717
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (256 CPU frames and 384 GPU frames)
+compute time: 0.829 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884717
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (320 CPU frames and 320 GPU frames)
+compute time: 1.007 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884717
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (384 CPU frames and 256 GPU frames)
+compute time: 0.974 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884717
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (448 CPU frames and 192 GPU frames)
+compute time: 1.298 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884717
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (512 CPU frames and 128 GPU frames)
+compute time: 1.423 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884717
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (576 CPU frames and 64 GPU frames)
+compute time: 1.416 s
+ 
+TACC: Shutdown complete. Exiting.
+TACC: Starting up job 884717
+TACC: Setting up parallel environment for MVAPICH2+mpispawn.
+TACC: Starting parallel tasks...
+Fractal v1.7
+computing 640 frames of 512 by 512 fractal (640 CPU frames and 0 GPU frames)
+compute time: 1.684 s
+ 
+TACC: Shutdown complete. Exiting.
+Thu Dec  6 00:34:06 CST 2018
