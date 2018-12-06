@@ -39,7 +39,7 @@ void GPU_Fini(const int gpu_frames, const int width, unsigned char* pic, unsigne
 static void fractal(const int start_frame, const int cpu_frames, const int width, unsigned char* pic)
 {
   #pragma omp parallel for num_threads(19) default(none) shared(cpu_frames, width, pic) schedule(static, 1)
-  for (int frame = 0; frame < cpu_frames; frame++) {
+  for (int frame = start_frame; frame < (start_frame + cpu_frames); frame++) {
     const double delta = Delta * pow(0.98, frame);
     const double xMin = xMid - delta;
     const double yMin = yMid - delta;

@@ -41,7 +41,7 @@ static void fractal(const int start_frame, const int cpu_frames, const int width
 {
   // todo: use OpenMP to compute the frames with 19 threads, default(none), and a cyclic schedule
   #pragma omp parallel for num_threads(19) default(none) shared(pic, width) schedule(static, 1)
-  for (int frame = 0; frame < cpu_frames; frame++) {
+  for (int frame = start_frame; frame < (start_frame+cpu_frames); frame++) {
     const double delta = Delta * pow(0.98, frame);
     const double xMin = xMid - delta;
     const double yMin = yMid - delta;
@@ -62,7 +62,7 @@ static void fractal(const int start_frame, const int cpu_frames, const int width
           x = x2 - y2 + cx;
           depth--;
         } while ((depth > 0) && ((x2 + y2) < 5.0));
-        pic[frame * width * width + row * width + col] = (unsigned char)depth;
+        pic[frame - start_frame * width * width + row * width + col] = (unsigned char)depth;
       }
     }
   }
@@ -89,37 +89,42 @@ int main(int argc, char *argv[])
   if (gpu_frames < 0) {fprintf(stderr, "error: gpu_frames must be at least 0\n"); exit(-1);}
   int frames = cpu_frames + gpu_frames;
   if (frames < 1) {fprintf(stderr, "error: total number of frames must be at least 1\n"); exit(-1);}
-  if (my_rank == 0) {printf("computing %d frames of %d by %d fractal (%d CPU frames and %d GPU frames)\n", frames, width, width, cpu_frames, gpu_frames);}
+  if (my_rank == 0) {
+    printf("computing %d frames of %d by %d fractal (%d CPU frames and %d GPU frames)\n", frames, width, width, cpu_frames, gpu_frames);
+    printf("The number of MPI Processes is: %d\n",comm_sz);    
+    }
 
   gpu_frames = gpu_frames / comm_sz;
   cpu_frames = cpu_frames / comm_sz;
   
+  frames = frames / comm_sz;
   const int cpu_start_frame = my_rank * frames;
   const int gpu_start_frame = cpu_start_frame + cpu_frames;
 
 
   // allocate picture arrays
-  unsigned char* pic = new unsigned char[(frames / comm_sz) * width * width];
+  unsigned char* pic ;
+  unsigned char* my_pic = new unsigned char[frames * width *width];
   unsigned char* pic_d = GPU_Init(gpu_frames, width);
 
-  MPI_Barrier(MPI_COMM_WORLD);
 
+if (my_rank == 0){}
+  pic = new unsigned char[(frames * comm_sz) * width * width];
+}
   // start time
   timeval start, end;
+  MPI_Barrier(MPI_COMM_WORLD);
   gettimeofday(&start, NULL);
 
   // asynchronously compute the requested frames on the GPU
-  GPU_Exec(cpu_frames, gpu_frames, width, pic_d);
+  GPU_Exec(gpu_start_frame, gpu_frames, width, pic_d);
 
   // compute the remaining frames on the CPU
-  fractal(0, cpu_frames, width, pic);
+  fractal(cpu_start_frame, cpu_frames, width, my_pic);
   
-  unsigned char *n_pic = (my_rank == 0) ? new unsigned char[frames * width * width] : NULL;
-
-
   // copy the GPU's result into the appropriate location of the CPU's pic array
-  GPU_Fini(gpu_frames, width, &pic[cpu_frames * width * width], pic_d);
-  MPI_Gather(pic, frames / comm_sz * width * width, MPI_CHAR, n_pic, frames / comm_sz * width * width, MPI_CHAR, 0, MPI_COMM_WORLD);
+  GPU_Fini(gpu_frames, width, &my_pic[cpu_frames * width * width], pic_d);
+  MPI_Gather(my_pic, frames * width * width, MPI_UNSIGNED_CHAR, pic, frames * width * width, MPI_UNSIGNED_CHAR, 0, MPI_COMM_WORLD);
 
   // end time
   gettimeofday(&end, NULL);
@@ -129,16 +134,18 @@ int main(int argc, char *argv[])
       printf("compute time: %.3f s\n", runtime);
 
   // verify result by writing frames to BMP files
-  if ((width <= 255) && (frames <= 100)) {
-    for (int frame = 0; frame < frames; frame++) {
+  if ((width <= 256) && ((frames * comm_sz) <= 100)  &&  (my_rank == 0) ){
+    for (int frame = 0; frame < (frames * comm_sz); frame++) {
       char name[32];
       sprintf(name, "fractal%d.bmp", frame + 1000);
       writeBMP(width, width, &n_pic[frame * width * width], name);
         }
     }
   }
+  if(my_rank == 0) {
   delete [] pic;
-  free(n_pic);
+  }
+  delete [] my_pic;
   MPI_Finalize();
   return 0;
 }

@@ -35,10 +35,10 @@ static const double yMid =  0.55267;
 
 static __global__ void FractalKernel(const int start_frame, const int gpu_frames, const int width, unsigned char* pic_d)
 {
-  // todo: use the GPU to compute the frames (base the code on the previous project)
+
   // compute frames
-  const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x;
-  if(idx < (gpu_frames - start_frame) * (width * width)){
+  const long idx = threadIdx.x + blockIdx.x * (long)blockDim.x * width * width;
+  if(idx < (gpu_frames + start_frame) * (width * width)){
     const int frame = idx / (width * width);
     const int row = (idx / width) % width; 
     const int col = idx % width;
@@ -60,7 +60,7 @@ static __global__ void FractalKernel(const int start_frame, const int gpu_frames
           x = x2 - y2 + cx;
           depth--;
         } while ((depth > 0) && ((x2 + y2) < 5.0));
-        pic_d[frame * width * width + row * width + col] = (unsigned char)depth;
+        pic_d[(frame - start_frame)* width * width + row * width + col] = (unsigned char)depth;
       }
 }
 
@@ -74,7 +74,7 @@ unsigned char* GPU_Init(const int gpu_frames, const int width)
 void GPU_Exec(const int start_frame, const int gpu_frames, const int width, unsigned char* pic_d)
 {
   //launch kernel 
-  FractalKernel<<<((gpu_frames - start_frame) * width * width + ThreadsPerBlock-1) / ThreadsPerBlock, ThreadsPerBlock>>>(start_frame, gpu_frames, width, pic_d);
+  FractalKernel<<<(gpu_frames * width * width + ThreadsPerBlock-1) / ThreadsPerBlock, ThreadsPerBlock>>>(start_frame, gpu_frames, width, pic_d);
   
 }
 
