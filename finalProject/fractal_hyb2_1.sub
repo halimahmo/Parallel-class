@@ -9,6 +9,9 @@
 
 date
 
+ibrun tacc_affinity ./fractal_hyb2 250 0 10
+
+
 ibrun tacc_affinity ./fractal_hyb2 512 0 640
 ibrun tacc_affinity ./fractal_hyb2 512 64 576
 ibrun tacc_affinity ./fractal_hyb2 512 128 512
