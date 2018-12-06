@@ -107,7 +107,6 @@ int main(int argc, char *argv[])
   unsigned char* my_pic = new unsigned char[frames * width *width];
   unsigned char* pic_d = GPU_Init(gpu_frames, width);
 
-
 if (my_rank == 0){}
   pic = new unsigned char[(frames * comm_sz) * width * width];
 }
