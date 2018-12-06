@@ -73,14 +73,14 @@ unsigned char* GPU_Init(const int gpu_frames, const int width)
 
 void GPU_Exec(const int start_frame, const int gpu_frames, const int width, unsigned char* pic_d)
 {
-  // todo: launch the kernel with ThreadsPerBlock and the appropriate number of blocks
+  //launch kernel 
   FractalKernel<<<((gpu_frames - start_frame) * width * width + ThreadsPerBlock-1) / ThreadsPerBlock, ThreadsPerBlock>>>(start_frame, gpu_frames, width, pic_d);
-  //cudaDeviceSynchronize();
+  
 }
 
 void GPU_Fini(const int gpu_frames, const int width, unsigned char* pic, unsigned char* pic_d)
 {
-  // todo: copy the result from the device to the host and free the device memory
+  //copy result to  host
   if (cudaSuccess != cudaMemcpy(pic, pic_d, gpu_frames * width * width * sizeof(unsigned char), cudaMemcpyDeviceToHost)) {fprintf(stderr, "copying from device failed\n"); exit(-1);}
   cudaFree(pic_d);
 }

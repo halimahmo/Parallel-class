@@ -36,8 +36,8 @@ static int collatz(const long start, const long stop)
 {
   int maxlen = 0;
   const long range = stop - start;
-  // todo: OpenMP code with 19 threads, default(none), a reduction, and a block-cyclic schedule with a block size of 100
-// compute sequence lengths
+
+  // compute sequence lengths
   #pragma omp parallel for num_threads(19) default(none) reduction(max:maxlen) schedule(static, 100)
   for (long i = 1; i <= range; i++) {
     long val = i;
@@ -100,7 +100,6 @@ int main(int argc, char *argv[])
   int loc_maxlen = std::max(cpu_maxlen, gpu_maxlen);
 
   int maxlen;
-  // todo: MPI_Reduce(...);
   MPI_Reduce(&loc_maxlen, &maxlen, 1, MPI_INTEGER, MPI_MAX, 0, MPI_COMM_WORLD);
 
   if (my_rank == 0) {
