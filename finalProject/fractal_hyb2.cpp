@@ -41,7 +41,7 @@ static void fractal(const int start_frame, const int cpu_frames, const int width
 {
   // todo: use OpenMP to compute the frames with 19 threads, default(none), and a cyclic schedule
   #pragma omp parallel for num_threads(19) default(none) shared(pic, width) schedule(static, 1)
-  for (int frame = start_frame; frame < (start_frame+cpu_frames); frame++) {
+  for (int frame = start_frame; frame < (start_frame + cpu_frames); frame++) {
     const double delta = Delta * pow(0.98, frame);
     const double xMin = xMid - delta;
     const double yMin = yMid - delta;
@@ -62,7 +62,7 @@ static void fractal(const int start_frame, const int cpu_frames, const int width
           x = x2 - y2 + cx;
           depth--;
         } while ((depth > 0) && ((x2 + y2) < 5.0));
-        pic[frame - start_frame * width * width + row * width + col] = (unsigned char)depth;
+        pic[(frame - start_frame) * width * width + row * width + col] = (unsigned char)depth;
       }
     }
   }
